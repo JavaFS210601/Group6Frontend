@@ -15,7 +15,7 @@ export class AdminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      alert("hello, you may pass this time");
+     
       if (!this.auth.isAuthenticated()) {
         
         this.router.navigate(['admin']);
