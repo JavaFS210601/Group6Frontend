@@ -9,7 +9,11 @@ const routes: Routes = [
 
   {
     path: "",
-    component: HeadquarterComponent  // replace this with home component
+    redirectTo: '/home', pathMatch: 'full'  // replace this with home component
+  },
+  {
+    path: "home",
+    component: HeadquarterComponent 
   },
   {
     path:"admin",
