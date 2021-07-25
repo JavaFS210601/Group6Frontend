@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './component/admin/admin.component';
 import { AdminGuard } from './guard/admin.guard';
 import { HomeComponent } from './component/home/home.component';
+import { AboutComponent } from './component/about/about.component';
+import { FaqComponent } from './component/faq/faq.component';
 
 
 const routes: Routes = [
@@ -15,6 +17,14 @@ const routes: Routes = [
   {
     path:'home',
     component: HomeComponent  // replace this with home component
+  },
+  {
+    path:'about',
+    component: AboutComponent  // replace this with about component
+  },
+  {
+    path:'faq',
+    component: FaqComponent  // replace this with frequently asked questions component
   },
   {
     path:"**",

@@ -9,12 +9,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './component/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedBootstrapModule } from './shared/shared-bootstrap.module';
+import { AboutComponent } from './component/about/about.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
+import { FaqComponent } from './component/faq/faq.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent,
+    NavbarComponent,
+    FaqComponent
     
     //declare other components here 
   ],
