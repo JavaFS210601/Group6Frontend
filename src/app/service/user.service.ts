@@ -45,6 +45,16 @@ export class UserService {
      );
    }
 
+   getUser(id: number): Observable<User> {
+    const url = `${this.ChefRecipesrl}/${id}`;
+    //return this.http.get<Hero>(url) as Observable<Hero>;
+    return this.http.get<User>(url) 
+    .pipe(
+      tap(_ => this.log(`fetched hero id=${id}`)),
+      catchError(this.handleError<User>(`getHero id=${id}`)) 
+    );
+  }
+
    private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   

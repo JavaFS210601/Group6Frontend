@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './component/admin/admin.component';
 import { HeadquarterComponent } from './component/headquarter/headquarter.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { UserDetailComponent } from './component/user-detail/user-detail.component';
 import { AdminGuard } from './guard/admin.guard';
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate: [AdminGuard]
   },
+  {path: 'detail/:id' , component: UserDetailComponent},
   {
     path:"**",
     component: PageNotFoundComponent  // replace this with other component
