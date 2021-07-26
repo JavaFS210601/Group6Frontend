@@ -10,6 +10,13 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
+
+  max = 10;
+  rate = 7;
+  isReadonly = false;
+ 
+ 
+
   userId : string | null;
  //userRef : Observable<User>;
  user: User | undefined;
@@ -23,6 +30,17 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+  }
+
+  confirmSelection(event: KeyboardEvent) {
+    if (event.keyCode === 13 || event.key === 'Enter') {
+      this.isReadonly = true;
+    }
+  }
+ 
+  resetStars() {
+    this.rate = 0;
+    this.isReadonly = false;
   }
 
   /*

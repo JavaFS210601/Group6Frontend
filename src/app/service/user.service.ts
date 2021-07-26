@@ -12,7 +12,7 @@ export class UserService {
 
   private serverUrl = 'http://localhost:8081/HelloSpringMVC/avengers';
 
-  private ChefRecipesrl = 'http://localhost:8081/P2-ChefRecipes/users';
+  private ChefRecipesrl = 'http://localhost:8088/users';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

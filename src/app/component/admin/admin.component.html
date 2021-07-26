@@ -1,51 +1,9 @@
 
-
-<p> commands: </p>
-<p> For component: ng generate component component/admin </p>
-<p> For service: ng generate service service/name</p>
-
-<p> For pip : ng generate pipe pipe/name</p>
-
-<p>  How to create branch </p>
-<p> git branch branchname </p>
-<p> git checkout branchname </p>
-
-<p > Doing both command at once : git checkout -b branchname</p>
-
-<!-- 
-  <h2>{{user.username}} Details</h2>
-  <div><span>id: </span>{{user.id}}</div>
-  <div><span>name: </span>{{user.username}}</div> -->
-
-<div *ngIf="heroes">
-<!-- <ul class="heroes">
-  <li *ngFor="let hero of heroes"
-    [class.selected]="hero === selectedHero"
-    (click)="onSelect(hero)"
-    >
-    <span class="badge">{{hero.id}}</span> {{hero.heroName}}
-  </li>
-</ul> -->
-<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
-
-  <!-- <div *ngFor= " let hero of heroRef | async ">
-    <span>{{ hero.id }}</span> <span>{{ hero.heroName}}</span>
-
-  </div> -->
-</div>
-
 <div class="container">
 <div *ngIf="userRef">
-  <!-- <ul class="heroes">
-    <li *ngFor="let hero of heroes"
-      [class.selected]="hero === selectedHero"
-      (click)="onSelect(hero)"
-      >
-      <span class="badge">{{hero.id}}</span> {{hero.heroName}}
-    </li>
-  </ul> -->
-  <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
-  
+  <h3> User Dashboard</h3>
+      <a routerLink="/detail/1">Test link for detail page</a>
+
     <div *ngFor= " let user of userRef | async ">
       
        <a routerLink="/detail/{{user.user_id}}">
