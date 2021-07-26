@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './component/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +14,12 @@ import { AboutComponent } from './component/about/about.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { FaqComponent } from './component/faq/faq.component';
 
+import { NavComponent } from './component/nav/nav.component';
+import { HeroDetailComponent } from './component/hero-detail/hero-detail.component';
+import { LoginComponent } from './component/login/login.component';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,8 +27,12 @@ import { FaqComponent } from './component/faq/faq.component';
     HomeComponent,
     AboutComponent,
     NavbarComponent,
-    FaqComponent
-    
+    FaqComponent,
+    NavComponent,
+    HeroDetailComponent,
+    LoginComponent,
+    PageNotFoundComponent,
+
     //declare other components here 
   ],
   imports: [
