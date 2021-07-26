@@ -12,7 +12,7 @@ export class UserService {
 
   private serverUrl = 'http://localhost:8081/HelloSpringMVC/avengers';
 
-  private ChefRecipesrl = 'http://localhost:8081/P2-ChefRecipes/users';
+  private ChefRecipesrl = 'http://localhost:8088/users';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -37,6 +37,11 @@ export class UserService {
     );
   }
 
+  /*
+    Retrieve all the user data from backend 
+    return a Observable<User[]> object 
+    error is handled by handleError method 
+  */
   getUsers(): Observable<User[]> {
 
      return this.http.get<User[]>(this.ChefRecipesrl)
@@ -45,9 +50,14 @@ export class UserService {
      );
    }
 
+     /*
+    Retrieve a the user data by its id from backend 
+    return a Observable<User> object 
+    error is handled by handleError method 
+  */
    getUser(id: number): Observable<User> {
     const url = `${this.ChefRecipesrl}/${id}`;
-    //return this.http.get<Hero>(url) as Observable<Hero>;
+    
     return this.http.get<User>(url) 
     .pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
@@ -55,6 +65,10 @@ export class UserService {
     );
   }
 
+  /*
+  Error handling method provided by offical angular tutorial
+  which will get call if the http request occurs error.
+  */
    private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   
@@ -68,6 +82,10 @@ export class UserService {
       return of(result as T);
     };
   }
+
+  /*
+  method that log the error message
+  */
   private log(message: string) {
     //this.messageService.add(`HeroService: ${message}`);
     console.log(message);

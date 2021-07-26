@@ -19,6 +19,7 @@ import { HeroDetailComponent } from './component/hero-detail/hero-detail.compone
 import { LoginComponent } from './component/login/login.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { UserDetailComponent } from './component/user-detail/user-detail.compone
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SharedBootstrapModule
+    SharedBootstrapModule,
+    RatingModule.forRoot()
     
   ],
   providers: [],
