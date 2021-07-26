@@ -31,7 +31,7 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
     NavComponent,
     HeroDetailComponent,
     LoginComponent,
-    PageNotFoundComponent,
+    PageNotFoundComponent
 
     //declare other components here 
   ],
