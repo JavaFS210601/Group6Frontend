@@ -17,10 +17,6 @@ const routes: Routes = [
     redirectTo: '/home', pathMatch: 'full'  // replace this with home component
   },
   {
-    path: "home",
-    component: HeadquarterComponent 
-  },
-  {
     path:"admin",
     component: AdminComponent,
     canActivate: [AdminGuard]
