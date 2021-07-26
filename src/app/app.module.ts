@@ -32,8 +32,10 @@ import { UserDetailComponent } from './component/user-detail/user-detail.compone
     NavComponent,
     HeroDetailComponent,
     LoginComponent,
+
     PageNotFoundComponent,
-    UserDetailComponent,
+    UserDetailComponent
+
     //declare other components here 
   ],
   imports: [
