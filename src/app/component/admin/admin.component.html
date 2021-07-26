@@ -47,7 +47,10 @@
   <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
   
     <div *ngFor= " let user of userRef | async ">
-      <span> id:{{ user.user_id }} </span> <span> username:{{ user.username}}</span>
+      
+       <a routerLink="/detail/{{user.user_id}}">
+        <span class="badge" style="color: black;">{{user.user_id }}</span> 
+      </a> <span> username:{{ user.username }}</span>
       <span> firstname:{{ user.firstname }} </span> <span> lastname:{{ user.lastname}}</span>
 
     </div>
