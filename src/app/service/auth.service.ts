@@ -35,59 +35,16 @@ export class AuthService {
       observabledata.subscribe(myObserver);
   }
 
-  getHeros(): Observable<Hero[]> {
-   // const heroes = of(HEROES);
-    return this.http.get<Hero[]>(this.serverUrl)
-    .pipe(
-      catchError(this.handleError<Hero[]>('getHeroes', []))
-    );
-  }
-
-  /** GET hero by id. Will 404 if id not found */
-  getHero(id: number): Observable<Hero> {
-    const url = `${this.serverUrl}/${id}`;
-    return this.http.get<Hero>(url).pipe(
-      tap((name) =>   localStorage.setItem('username', name.heroName)),
-      catchError(this.handleError<Hero>(`getHero id=${id}`))
-    );
-  }
-
 
   isAuthenticated() {
     //if localstorage has the user information , return user is login.
-    if(localStorage.getItem("username")) { return true;}
+    if(localStorage.getItem("username")) { 
+      return true;
+    } else {
+       // redirect to login page. 
+    }
     
-   
-    let heroFromHome =   this.getHero(1);
-  
-    // heroFromHome.pipe(switchMap(isAuth => {
-    //         if (isAuth) {
-    //           return "true";
-    //         } else {
-    //             return "false";
-    //         }
-    //     }));
 
-    // Create observer object
-        
-
-        heroFromHome.subscribe({
-          next:name => { console.log(name.heroName); 
-                this.heroName = name.heroName;
-                alert("Welcome back " + this.heroName ); 
-                
-            
-                
-          },
-          error(err: Error){
-            console.error('Observer got an error: ' + err);
-            
-          },
-          complete() { 
-            console.log('Finished sequence');
-            
-          }
-        });
 
         alert(this.isLogin);
 

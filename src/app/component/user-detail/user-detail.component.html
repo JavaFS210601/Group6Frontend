@@ -1,8 +1,22 @@
 <p>user-detail works!</p>
 
-<div *ngIf="userRef"> 
+<div *ngIf="user"> 
 
-    <!-- <div *ngFor="let user of userRef">  </div> -->
-        <p>{{userRef }}</p>
+    <!-- <div *ngFor="let user of userRef | async">   </div> -->
+    <h2>{{user.username | uppercase}} Details </h2>
+
+    <div class="row"> id {{ user.user_id }} 
+        <div class="row"> 
+        <div class="col-sm-2"> {{user.firstname}}</div>
+        <div class="col-sm-2"> {{user.lastname}}</div>
+        <div class="col-sm-2">  role id: {{ user.role_id }}</div>
+        <div class="col-sm-2">  recipe id:{{ user.recipe_id }}</div>
+        </div>
+
+        <div class="row"> 
+         
+        </div>
+    </div>
+
    
 </div>

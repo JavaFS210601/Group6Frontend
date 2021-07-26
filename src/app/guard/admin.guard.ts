@@ -12,6 +12,9 @@ export class AdminGuard implements CanActivate {
  
   constructor(public auth: AuthService, public router: Router) {}
 
+  /*
+  This method is called when the user try to enter a specific link
+  */
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

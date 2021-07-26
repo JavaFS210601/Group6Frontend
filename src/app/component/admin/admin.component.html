@@ -34,6 +34,7 @@
   </div> -->
 </div>
 
+<div class="container">
 <div *ngIf="userRef">
   <!-- <ul class="heroes">
     <li *ngFor="let hero of heroes"
@@ -48,5 +49,7 @@
     <div *ngFor= " let user of userRef | async ">
       <span> id:{{ user.user_id }} </span> <span> username:{{ user.username}}</span>
       <span> firstname:{{ user.firstname }} </span> <span> lastname:{{ user.lastname}}</span>
+
     </div>
   </div>
+</div>
