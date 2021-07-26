@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './component/admin/admin.component';
 import { HeadquarterComponent } from './component/headquarter/headquarter.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { UserDetailComponent } from './component/user-detail/user-detail.component';
 import { AdminGuard } from './guard/admin.guard';
 import { HomeComponent } from './component/home/home.component';
 import { AboutComponent } from './component/about/about.component';
@@ -12,10 +13,15 @@ import { FaqComponent } from './component/faq/faq.component';
 const routes: Routes = [
 
   {
+    path: "",
+    redirectTo: '/home', pathMatch: 'full'  // replace this with home component
+  },
+  {
     path:"admin",
     component: AdminComponent,
     canActivate: [AdminGuard]
   },
+  {path: 'detail/:id' , component: UserDetailComponent},
   {
 
     path:'home',

@@ -18,6 +18,7 @@ import { NavComponent } from './component/nav/nav.component';
 import { HeroDetailComponent } from './component/hero-detail/hero-detail.component';
 import { LoginComponent } from './component/login/login.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { UserDetailComponent } from './component/user-detail/user-detail.component';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
     HeroDetailComponent,
     LoginComponent,
     PageNotFoundComponent,
-
+    UserDetailComponent,
     //declare other components here 
   ],
   imports: [

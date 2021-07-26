@@ -12,6 +12,7 @@ export class UserService {
 
   private serverUrl = 'http://localhost:8081/HelloSpringMVC/avengers';
 
+  private ChefRecipesrl = 'http://localhost:8081/P2-ChefRecipes/users';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -20,29 +21,39 @@ export class UserService {
 
   getHeros(): Observable<Hero[]> {
    // const heroes = of(HEROES);
-    return this.http.get<Hero[]>(this.serverUrl);
-    // .pipe(
-    //   catchError(this.handleError<Hero[]>('getHeroes', []))
-    // );
+    return this.http.get<Hero[]>(this.serverUrl)
+    .pipe(
+      catchError(this.handleError<Hero[]>('getHeroes', []))
+    );
   }
   /** GET hero by id. Will 404 if id not found */
   getHero(id: number): Observable<Hero> {
     const url = `${this.serverUrl}/${id}`;
-    return this.http.get<Hero>(url) as Observable<Hero>;
-    
-    // .pipe(
-    //   tap(_ => this.log(`fetched hero id=${id}`)),
-    //   catchError(this.handleError<Hero>(`getHero id=${id}`))
-    // );
+    //return this.http.get<Hero>(url) as Observable<Hero>;
+    return this.http.get<Hero>(url)
+    .pipe(
+      tap(_ => this.log(`fetched hero id=${id}`)),
+      catchError(this.handleError<Hero>(`getHero id=${id}`))
+    );
   }
 
   getUsers(): Observable<User[]> {
-    // const heroes = of(HEROES);
-     return this.http.get<User[]>(this.serverUrl)
+
+     return this.http.get<User[]>(this.ChefRecipesrl)
      .pipe(
-       catchError(this.handleError<User[]>('getHeroes', []))
+       catchError(this.handleError<User[]>('getUsers', []))
      );
    }
+
+   getUser(id: number): Observable<User> {
+    const url = `${this.ChefRecipesrl}/${id}`;
+    //return this.http.get<Hero>(url) as Observable<Hero>;
+    return this.http.get<User>(url) 
+    .pipe(
+      tap(_ => this.log(`fetched hero id=${id}`)),
+      catchError(this.handleError<User>(`getHero id=${id}`)) 
+    );
+  }
 
    private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
