@@ -12,10 +12,10 @@
 
 <p > Doing both command at once : git checkout -b branchname</p>
 
-
+<!-- 
   <h2>{{user.username}} Details</h2>
   <div><span>id: </span>{{user.id}}</div>
-  <div><span>name: </span>{{user.username}}</div>
+  <div><span>name: </span>{{user.username}}</div> -->
 
 <div *ngIf="heroes">
 <!-- <ul class="heroes">
@@ -28,9 +28,25 @@
 </ul> -->
 <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
 
-  <div *ngFor= " let hero of heroRef | async ">
+  <!-- <div *ngFor= " let hero of heroRef | async ">
     <span>{{ hero.id }}</span> <span>{{ hero.heroName}}</span>
 
-  </div>
+  </div> -->
 </div>
 
+<div *ngIf="userRef">
+  <!-- <ul class="heroes">
+    <li *ngFor="let hero of heroes"
+      [class.selected]="hero === selectedHero"
+      (click)="onSelect(hero)"
+      >
+      <span class="badge">{{hero.id}}</span> {{hero.heroName}}
+    </li>
+  </ul> -->
+  <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
+  
+    <div *ngFor= " let user of userRef | async ">
+      <span> id:{{ user.user_id }} </span> <span> username:{{ user.username}}</span>
+      <span> firstname:{{ user.firstname }} </span> <span> lastname:{{ user.lastname}}</span>
+    </div>
+  </div>

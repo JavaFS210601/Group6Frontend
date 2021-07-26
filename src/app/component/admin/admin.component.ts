@@ -13,21 +13,23 @@ export class AdminComponent implements OnInit {
 
  // userService : UserService | undefined;
  heroRef: Observable<Hero[]>;
-  user: User = {
-    id: 1,
-    username: 'kenny',
-    password: 'pwd',
-    firstname: 'ken',
-    lastname: 'eng',
-    roleId: 1,
-    recipeId: 1
-  };
+ userRef: Observable<User[]>;
+  // user: User = {
+  //   id: 1,
+  //   username: 'kenny',
+  //   password: 'pwd',
+  //   firstname: 'ken',
+  //   lastname: 'eng',
+  //   roleId: 1,
+  //   recipeId: 1
+  // };
 
   heroes: Hero[] = [];
 
   constructor(private userService: UserService) { 
     //this.userService = userService;
     this.heroRef = this.userService.getHeros();
+    this.userRef = this.userService.getUsers();
   }
 
   ngOnInit(): void {
@@ -37,15 +39,7 @@ export class AdminComponent implements OnInit {
   }
 
   getHero(){
-    let heroObserver = this.userService.getHeros();
-    // heroObserver.subscribe(
-    //   (data:Hero[]) => { this.heroes=data; }, 
-
-    //   () => {
-    //     this.heroes = [];
-    //     console.log("Something went wrong catching your pokemon!!!")
-    //   }
-    // );
+    //this.heroRef = this.userService.getHeros();
 
   }
 
