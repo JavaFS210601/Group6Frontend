@@ -1,0 +1,29 @@
+
+<div *ngIf="user"> 
+
+    <!-- <div *ngFor="let user of userRef | async">   </div> -->
+    <h2>{{user.username | uppercase}} Details </h2>
+
+    <div class="row"> id {{ user.user_id }} 
+        <div class="row"> 
+        <div class="col-sm-2"> {{user.firstname}}</div>
+        <div class="col-sm-2"> {{user.lastname}}</div>
+        <div class="col-sm-2">  role id: {{ user.role_id }}</div>
+        <div class="col-sm-2">  recipe id:{{ user.recipe_id }}</div>
+        </div>
+
+       
+    </div>
+
+   
+</div>
+
+<div class="row"> 
+    <h4>Give me a rating</h4>
+    <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"
+(keyup)="confirmSelection($event)"></rating>
+<div class="card">
+<pre class="card-block card-header" style="margin:15px 0;">Rating: <b>{{rate}}</b>;  Readonly is: <i>{{isReadonly}}</i>;</pre>
+</div>
+<button class="btn btn-primary" (click)="resetStars()">Reset rating and status</button>
+</div>
