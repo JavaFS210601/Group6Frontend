@@ -8,6 +8,8 @@ import { AdminGuard } from './guard/admin.guard';
 import { HomeComponent } from './component/home/home.component';
 import { AboutComponent } from './component/about/about.component';
 import { FaqComponent } from './component/faq/faq.component';
+import { UploadComponent } from './component/upload/upload.component';
+import { RecipecardComponent } from './component/recipecard/recipecard.component';
 
 
 const routes: Routes = [
@@ -26,6 +28,10 @@ const routes: Routes = [
 
     path:'home',
     component: HomeComponent  // replace this with home component
+  },
+  {
+    path:'upload',
+    component: UploadComponent  // replace this with about component
   },
   {
     path:'about',
