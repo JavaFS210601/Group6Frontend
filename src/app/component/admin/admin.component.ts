@@ -12,7 +12,7 @@ import { User} from '../../models/User';
 export class AdminComponent implements OnInit {
 
  // userService : UserService | undefined;
- heroRef: Observable<Hero[]>;
+ //heroRef: Observable<Hero[]>;
  userRef: Observable<User[]>;
   // user: User = {
   //   id: 1,
@@ -28,7 +28,7 @@ export class AdminComponent implements OnInit {
 
   constructor(private userService: UserService) { 
     //this.userService = userService;
-    this.heroRef = this.userService.getHeros();
+    //this.heroRef = this.userService.getHeros();
     this.userRef = this.userService.getUsers();
   }
 
