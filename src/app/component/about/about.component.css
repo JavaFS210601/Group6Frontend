@@ -1,0 +1,18 @@
+.aboutImage {
+  position: relative;
+  display: inline-block;
+}
+
+.aboutImage,
+p {
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 40%;
+  text-align: center;
+  width: 60%;
+  background-color: aliceblue;
+  font-size: larger;
+}
