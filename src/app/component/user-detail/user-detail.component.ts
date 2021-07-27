@@ -49,6 +49,7 @@ export class UserDetailComponent implements OnInit {
   */
   getUser(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    alert("id is " + id);
     this.userService.getUser(id)
       .subscribe(data => this.user = data);
   }

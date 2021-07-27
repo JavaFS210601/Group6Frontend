@@ -4,12 +4,14 @@
   <h3> User Dashboard</h3>
       <a routerLink="/detail/1">Test link for detail page</a>
 
+  
+
     <div *ngFor= " let user of userRef | async ">
       
        <a routerLink="/detail/{{user.user_id}}">
         <span class="badge" style="color: black;">{{user.user_id }}</span> 
       </a> <span> username:{{ user.username }}</span>
-      <span> firstname:{{ user.firstname }} </span> <span> lastname:{{ user.lastname}}</span>
+      <span> firstname:{{ user.first_name }} </span> <span> lastname:{{ user.last_name}}</span>
 
     </div>
   </div>

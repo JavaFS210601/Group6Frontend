@@ -1,10 +1,12 @@
+import { Role } from "./Role";
+
 export interface User {
     // Each of these field name has to match the json data (variable names)  
     user_id: number;
     username: string;
     password: string;
-    firstname: string;
-    lastname: string;
-    role_id: number;
+    first_name: string;
+    last_name: string;
+    role_id: Role;
     recipe_id: number;
 }
