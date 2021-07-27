@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hero } from 'src/app/models/Hero';
+import { Ingediant } from 'src/app/models/Ingediant';
 import { UserService } from 'src/app/service/user.service';
 import { User} from '../../models/User';
 
@@ -14,15 +15,28 @@ export class AdminComponent implements OnInit {
  // userService : UserService | undefined;
  //heroRef: Observable<Hero[]>;
  userRef: Observable<User[]>;
-  // user: User = {
-  //   id: 1,
-  //   username: 'kenny',
-  //   password: 'pwd',
-  //   firstname: 'ken',
-  //   lastname: 'eng',
-  //   roleId: 1,
-  //   recipeId: 1
+
+//  role: Role {
+//    role_id: 1;
+//    role: "employye"
+//  };
+//   user: User = {
+//     user_id: 1,
+//     username: 'kenny',
+//     password: 'pwd',
+//     first_name: 'ken',
+//     last_name: 'eng',
+//     role_id:  role,
+//     recipe_id: 1
+//   };
+
+  // item: Ingediant = {
+  //   ingrediantId: 1,
+  //   ingrediant: "coconuts",
+  //   amount: 200
   // };
+
+  // itemList: Ingediant[] = [];
 
   heroes: Hero[] = [];
 
@@ -34,8 +48,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
      
-          
-      
+    
   }
 
   getHero(){
