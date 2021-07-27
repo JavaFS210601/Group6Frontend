@@ -3,8 +3,8 @@ export interface User {
     user_id: number;
     username: string;
     password: string;
-    firstname: string;
-    lastname: string;
+    first_name: string;
+    last_name: string;
     role_id: number;
     recipe_id: number;
 }

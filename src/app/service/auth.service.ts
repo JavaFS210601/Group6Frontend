@@ -12,8 +12,7 @@ import { UserService } from './user.service';
 })
 export class AuthService {
 
-  private isLogin: boolean;
-  private heroName : string ;
+  //private isLogin: boolean;
 
   private serverUrl = 'http://localhost:8081/HelloSpringMVC/avengers';
 
@@ -23,16 +22,16 @@ export class AuthService {
 
   constructor(private http: HttpClient , private userService: UserService ,private router: Router) { 
 
-      this.heroName = "";
-      this.isLogin = false;
-      const myObserver = {
-        next: (x: Hero) => x != undefined ? this.isLogin = true: this.isLogin = false,
-        error: (err: Error) => console.error('Observer got an error: ' + err),
-        complete: () => console.log('Observer got a complete notification'),
-      };
+      // this.heroName = "";
+      // this.isLogin = false;
+      // const myObserver = {
+      //   next: (x: Hero) => x != undefined ? this.isLogin = true: this.isLogin = false,
+      //   error: (err: Error) => console.error('Observer got an error: ' + err),
+      //   complete: () => console.log('Observer got a complete notification'),
+      // };
 
-      let observabledata = userService.getHero(1);
-      observabledata.subscribe(myObserver);
+     /// let observabledata = userService.getHero(1);
+    ///  observabledata.subscribe(myObserver);
   }
 
 
@@ -43,16 +42,11 @@ export class AuthService {
     } else {
        // redirect to login page. 
     }
-    
-
-
-        alert(this.isLogin);
-
-        // alert(localStorage.getItem("username"));
-        
+  
+        // make a backend call to find the user by username and pwd
        
        
-    return this.isLogin;
+    return true;
   }
 
   login(username: string, password: string) {
