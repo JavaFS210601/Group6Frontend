@@ -1,1 +1,52 @@
-<p>upload works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Upload</title>
+   <link rel = "stylesheet" href = "./../upload/upload.component.css">
+</head>
+<body>
+
+    <div class="container" id="fullcontainer">
+        <div class="col-sm-18">
+            <br>
+            <br>
+            <h1 id = "pageheader">Upload your recipe!</h1>
+        </div>     
+
+        <br>
+
+
+        <br>
+
+        <div id = "recipeSubmission">
+            <div class="row">
+                <h6 class="col-sm-3">Recipe Name</h6> 
+                <input id="cname" type="text" class="col-sm-6 form-control" placeholder="Enter your recipe's name">
+            </div>   
+            <br>
+            <div class="row">
+                <h6 class="col-sm-3">Recipe Category</h6> 
+                <input id="category" type="text" class="col-sm-6 form-control" placeholder="What category does your recipe belong in?">
+            </div>   
+            <br>
+            <div class="row">
+                <h6 class="col-sm-3">Recipe Descripition</h6> 
+                <textarea id="description" class="form-control" placeholder="Description" rows="3" cols="60"></textarea>
+            </div>
+            <br>
+            <div class="row">
+                <h6 class="col-sm-3">Inspiration for Recipe</h6> 
+                <textarea id="inspiration" class="form-control" placeholder="Inspiration" rows="3" cols="60"></textarea>
+            </div>
+
+            <br>
+
+            <br>
+            <button id = "submitRecipe" type="button">Submit Recipe</button>
+        </div>
+    </div>
+
+</body>
+</html>        
+        
