@@ -10,7 +10,12 @@ import { AboutComponent } from './component/about/about.component';
 import { FaqComponent } from './component/faq/faq.component';
 import { UploadComponent } from './component/upload/upload.component';
 import { RecipecardComponent } from './component/recipecard/recipecard.component';
+
 import { DashboardComponent } from './component/dashboard/dashboard.component';
+
+import { LoginComponent } from './component/login/login.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
+
 
 
 const routes: Routes = [
@@ -46,6 +51,14 @@ const routes: Routes = [
   {
     path:'faq',
     component: FaqComponent  // replace this with frequently asked questions component
+  },
+  {
+    path:'login',
+    component: LoginComponent  // replace this with frequently asked questions component
+  },
+  {
+    path:'sign-up',
+    component: SignUpComponent  // replace this with frequently asked questions component
   },
   {
 
