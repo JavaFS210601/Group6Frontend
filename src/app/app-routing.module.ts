@@ -15,6 +15,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 import { LoginComponent } from './component/login/login.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { DashboardRecipeComponent } from './component/dashboard-recipe/dashboard-recipe.component';
 
 
 
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
     path:"dashboard",
     component: DashboardComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path:"dashboard/recipes",
+    component: DashboardRecipeComponent,
     canActivate: [AdminGuard]
   },
   {path: 'detail/:id' , component: UserDetailComponent},
