@@ -38,6 +38,10 @@ const routes: Routes = [
     component: AboutComponent  // replace this with about component
   },
   {
+    path:'recipecard',
+    component: RecipecardComponent  // replace this with about component
+  },
+  {
     path:'faq',
     component: FaqComponent  // replace this with frequently asked questions component
   },
