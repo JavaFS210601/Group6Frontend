@@ -11,6 +11,13 @@ import { FaqComponent } from './component/faq/faq.component';
 import { UploadComponent } from './component/upload/upload.component';
 import { RecipecardComponent } from './component/recipecard/recipecard.component';
 
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+
+import { LoginComponent } from './component/login/login.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { DashboardRecipeComponent } from './component/dashboard-recipe/dashboard-recipe.component';
+
+
 
 const routes: Routes = [
 
@@ -21,6 +28,16 @@ const routes: Routes = [
   {
     path:"admin",
     component: AdminComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path:"dashboard",
+    component: DashboardComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path:"dashboard/recipes",
+    component: DashboardRecipeComponent,
     canActivate: [AdminGuard]
   },
   {path: 'detail/:id' , component: UserDetailComponent},
@@ -44,6 +61,14 @@ const routes: Routes = [
   {
     path:'faq',
     component: FaqComponent  // replace this with frequently asked questions component
+  },
+  {
+    path:'login',
+    component: LoginComponent  // replace this with frequently asked questions component
+  },
+  {
+    path:'sign-up',
+    component: SignUpComponent  // replace this with frequently asked questions component
   },
   {
 

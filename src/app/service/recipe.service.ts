@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { User } from '../models/User';
-
+import { Step } from '../models/Step';
 import { Recipe } from '../models/Recipe';
 
 @Injectable({
@@ -31,6 +31,19 @@ export class RecipeService {
     .pipe(
       catchError(this.handleError<Recipe[]>('getUsers', []))
     );
+  }
+
+  // test data
+  step: Step = {
+    step_id: 1,
+    step: "step1"
+  }
+  steps : Step[] = [];
+   //  test data
+
+  getRecipeSteps() : Step[]{
+    this.steps.push(this.step);
+    return this.steps;
   }
 
    /*

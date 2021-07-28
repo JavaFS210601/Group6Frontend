@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hero } from 'src/app/models/Hero';
 import { Ingediant } from 'src/app/models/Ingediant';
+import { Step } from 'src/app/models/Step';
+import { RecipeService } from 'src/app/service/recipe.service';
 import { UserService } from 'src/app/service/user.service';
 import { User} from '../../models/User';
 
@@ -38,12 +40,16 @@ export class AdminComponent implements OnInit {
 
   // itemList: Ingediant[] = [];
 
-  heroes: Hero[] = [];
+  //heroes: Hero[] = [];
 
-  constructor(private userService: UserService) { 
+  steps: Step[] = [];
+
+  constructor(private userService: UserService , private recipeService: RecipeService) { 
     //this.userService = userService;
     //this.heroRef = this.userService.getHeros();
     this.userRef = this.userService.getUsers();
+
+    this.steps = this.recipeService.getRecipeSteps();
   }
 
   ngOnInit(): void {
@@ -55,5 +61,7 @@ export class AdminComponent implements OnInit {
     //this.heroRef = this.userService.getHeros();
 
   }
+
+
 
 }
