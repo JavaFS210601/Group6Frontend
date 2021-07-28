@@ -22,6 +22,7 @@ import { UserDetailComponent } from './component/user-detail/user-detail.compone
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { UploadComponent } from './component/upload/upload.component';
 import { RecipecardComponent } from './component/recipecard/recipecard.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { RecipecardComponent } from './component/recipecard/recipecard.component
     PageNotFoundComponent,
     UserDetailComponent,
     UploadComponent,
-    RecipecardComponent
+    RecipecardComponent,
+    SignUpComponent
 
     //declare other components here 
   ],
