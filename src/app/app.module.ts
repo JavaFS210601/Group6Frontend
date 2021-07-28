@@ -28,6 +28,8 @@ import { DashboardRecipeComponent } from './component/dashboard-recipe/dashboard
 import { DashboardLeftbarComponent } from './component/dashboard-leftbar/dashboard-leftbar.component';
 
 import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -63,8 +65,9 @@ import { SignUpComponent } from './component/sign-up/sign-up.component';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedBootstrapModule,
-    RatingModule.forRoot()
-    
+    RatingModule.forRoot(),
+    TypeaheadModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

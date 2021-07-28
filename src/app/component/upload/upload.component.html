@@ -28,12 +28,23 @@
             <div class="row">
                 <h6 class="col-sm-3">Recipe Category</h6> 
                 <input id="category" type="text" class="col-sm-6 form-control" placeholder="What category does your recipe belong in?">
-            </div>   
+            </div>               
+            <br>
+            <form [formGroup]="myForm">
+                <input formControlName="ingredient"
+                       [typeahead]="ingredients"
+                       [typeaheadOptionsLimit]="10"
+                       [typeaheadMinLength]="0"
+                       placeholder="Select and add ingredients"
+                       class="form-control"
+                       cols="60">
+              </form>
             <br>
             <div class="row">
                 <h6 class="col-sm-3">Recipe Descripition</h6> 
                 <textarea id="description" class="form-control" placeholder="Description" rows="3" cols="60"></textarea>
             </div>
+
             <br>
             <div class="row">
                 <h6 class="col-sm-3">Inspiration for Recipe</h6> 
