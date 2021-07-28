@@ -1,1 +1,16 @@
-<p>recipecard works!</p>
+<div class="container">
+
+        <tr *ngFor="let recipe of recipes">
+            
+        <p>Recipe #{{ recipe.recipeId }}:</p>
+        <p>{{ recipe.name }}</p>
+        <p>About the recipe: {{ recipe.description }}</p>
+        <p>Category: {{ recipe.category }}</p>
+        <p>Their inspiration for this recipe: {{ recipe.inspiration }}</p>
+        <p>By userId: {{ recipe.userId }}</p>
+
+        <br>
+        <br>
+        </tr>
+
+</div>
