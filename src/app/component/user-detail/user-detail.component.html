@@ -1,23 +1,31 @@
-
-<div *ngIf="user"> 
+<div class="container">
+<div *ngIf="user">
 
     <!-- <div *ngFor="let user of userRef | async">   </div> -->
     <h2>{{user.username | uppercase}} Details </h2>
 
-    <div class="row"> id {{ user.user_id }} 
-        <div class="row"> 
-        <div class="col-sm-2"> {{user.first_name}}</div>
-        <div class="col-sm-2"> {{user.last_name}}</div>
-        <div class="col-sm-2">  role id: {{ user.role_id.role }}</div>
-        <div class="col-sm-2">  recipe id:{{ user.recipe_id }}</div>
+    <div class="row"> id {{ user.user_id }}
+        <div class="row">
+            <div class="col-sm-2"> {{user.first_name}}</div>
+            <div class="col-sm-2"> {{user.last_name}}</div>
+            <div class="col-sm-2"> role id: {{ user.role_id.role }}</div>
+            <div class="col-sm-2"> recipe id:{{ user.recipe_id }}</div>
         </div>
-
-       
+        <div class="row">
+            <div class="col">
+                <label for="user-name">User name: </label>
+                <input id="user-name" [(ngModel)]="user.username" placeholder="first name" />
+            </div>
+            <div class="col">
+                <button (click)="goBack()">go back</button>
+                <button (click)="save()">save</button>
+            </div>                
+        </div>
     </div>
 
-   
-</div>
 
+</div>
+</div>
 <!-- <div class="row"> 
     <h4>Give me a rating</h4>
     <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"

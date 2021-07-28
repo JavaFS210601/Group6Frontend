@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/service/user.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-user-detail',
@@ -20,7 +21,9 @@ export class UserDetailComponent implements OnInit {
   userId : string | null;
  //userRef : Observable<User>;
  user: User | undefined;
-  constructor( private userService: UserService , private route: ActivatedRoute) {
+  constructor( private userService: UserService , 
+    private route: ActivatedRoute,
+    private location: Location) {
 
     this.userId = this.route.snapshot.paramMap.get('id');
 
@@ -49,9 +52,20 @@ export class UserDetailComponent implements OnInit {
   */
   getUser(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    alert("id is " + id);
+    //alert("id is " + id);
     this.userService.getUser(id)
       .subscribe(data => this.user = data);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  save(): void {
+    if (this.user) {
+      this.userService.updateUser(this.user)
+        .subscribe(() => this.goBack());
+    }
   }
 
 }

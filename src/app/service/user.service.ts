@@ -19,27 +19,11 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  // getHeros(): Observable<Hero[]> {
-  //  // const heroes = of(HEROES);
-  //   return this.http.get<Hero[]>(this.serverUrl)
-  //   .pipe(
-  //     catchError(this.handleError<Hero[]>('getHeroes', []))
-  //   );
-  // }
-  // /** GET hero by id. Will 404 if id not found */
-  // getHero(id: number): Observable<Hero> {
-  //   const url = `${this.serverUrl}/${id}`;
-  //   //return this.http.get<Hero>(url) as Observable<Hero>;
-  //   return this.http.get<Hero>(url)
-  //   .pipe(
-  //     tap(_ => this.log(`fetched hero id=${id}`)),
-  //     catchError(this.handleError<Hero>(`getHero id=${id}`))
-  //   );
-  // }
-
-  login() {
-    // your login function.
-    //this.http.post(this.ChefRecipesrl);
+  updateUser(user: User) :  Observable<User>{
+      return this.http.put(this.ChefRecipesrl, user, this.httpOptions) as Observable<User>
+      // .pipe(
+      //    catchError(this.handleError<User>('updateUser'));
+      // )
   }
 
   /*
