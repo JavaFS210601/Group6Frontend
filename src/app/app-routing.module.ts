@@ -10,6 +10,7 @@ import { AboutComponent } from './component/about/about.component';
 import { FaqComponent } from './component/faq/faq.component';
 import { UploadComponent } from './component/upload/upload.component';
 import { RecipecardComponent } from './component/recipecard/recipecard.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path:"admin",
     component: AdminComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path:"dashboard",
+    component: DashboardComponent,
     canActivate: [AdminGuard]
   },
   {path: 'detail/:id' , component: UserDetailComponent},

@@ -1,0 +1,19 @@
+.displayControl1{
+    width: auto; 
+    height: inherit;
+    display: block;
+}
+.displayControl{
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .displayControl1{
+        width: auto; 
+        height: inherit;
+        display: none;
+    }
+    .displayControl{
+        display: block;
+    }
+}

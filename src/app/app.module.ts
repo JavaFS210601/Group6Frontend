@@ -22,6 +22,9 @@ import { UserDetailComponent } from './component/user-detail/user-detail.compone
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { UploadComponent } from './component/upload/upload.component';
 import { RecipecardComponent } from './component/recipecard/recipecard.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { DashboardRecipeComponent } from './component/dashboard-recipe/dashboard-recipe.component';
+import { DashboardLeftbarComponent } from './component/dashboard-leftbar/dashboard-leftbar.component';
 
 
 @NgModule({
@@ -39,7 +42,10 @@ import { RecipecardComponent } from './component/recipecard/recipecard.component
     PageNotFoundComponent,
     UserDetailComponent,
     UploadComponent,
-    RecipecardComponent
+    RecipecardComponent,
+    DashboardComponent,
+    DashboardRecipeComponent,
+    DashboardLeftbarComponent
 
     //declare other components here 
   ],
