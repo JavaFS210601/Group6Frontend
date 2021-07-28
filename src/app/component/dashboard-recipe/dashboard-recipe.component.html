@@ -13,28 +13,20 @@
             <table>
                 <th></th>
                 <tr>
-                    <td> recipe 1</td>
-                    <td> Detail 1</td>
-                    <td> Detail 2</td>
-
+                    <td></td>
+                    <td>Recipe:</td>
+                    <td>About:</td>
+                    <td>Category:</td>
+                    <td>Inspiration:</td>
+                    <td>By:</td>
                 </tr>
-                <tr>
-                    <td> recipe 2</td>
-                    <td> Detail 1</td>
-                    <td> Detail 2</td>
-
-                </tr>
-                <tr>
-                    <td> recipe 3</td>
-                    <td> Detail 1</td>
-                    <td> Detail 2</td>
-
-                </tr>
-                <tr>
-                    <td> recipe 4</td>
-                    <td> Detail 1</td>
-                    <td> Detail 2</td>
-
+                <tr *ngFor="let recipe of recipes">
+                    <td>#{{ recipe.recipeId }}:</td>
+                    <td>{{ recipe.name }}</td>
+                    <td>{{ recipe.description }}</td>
+                    <td>{{ recipe.category }}</td>
+                    <td>{{ recipe.inspiration }}</td>
+                    <td>userId: {{ recipe.userId }}</td>
                 </tr>
             </table>
         </div>
