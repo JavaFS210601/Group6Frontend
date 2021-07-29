@@ -35,8 +35,6 @@ export class DashboardRecipeComponent implements OnInit {
 user: User | undefined;
 userRef: Observable<User[]>;
 
-
-
 recipe: Recipe | undefined;
 recipeRef: Observable<Recipe []>;
 
@@ -69,9 +67,9 @@ constructor(private userService: UserService , private recipeService: RecipeServ
       data =>  {
         console.log("!!! recipes recieved "
         + data[0].recipe_id  + " " + data[0].description + " "
-         + data[0].inspiration  + " "  + data[0].name  + " "
+         +" inspiration:" + data[0].inspiration  + " "  + data[0].name  + " "
          + data[0].category ); 
-  
+          this.recipe = data[0];
       } 
 
      
