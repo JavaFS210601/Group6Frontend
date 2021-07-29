@@ -28,25 +28,22 @@
                    <td>{{ recipe.name }}</td>
                    
                 </tr> -->
-                <tr *ngIf="recipe">
+                <tr *ngFor="let recipe of recipeRef2 | async">
                     <td></td>
                     <td>{{ recipe.name  }}</td>
                     <td>{{recipe.description }}</td>
                     <td>{{recipe.category}}</td>
                     <td>{{ recipe.inspiration }}</td>
                     <td> 
-                        <div  *ngIf="ingrediant1">
-                                <ul>
-                                <li>{{ ingrediant1.ingrediante_id  }}</li>
-                            <li>#{{ ingrediant1.ammount }}:</li>
-                            <li>#{{ ingrediant1.ingrediant }}:</li>
+                        <div  *ngFor="let ingrediant1 of recipeExtRef2 | async">
+                            <ul>
+                                <!-- <li>{{ ingrediant1.ingrediante_id  }}</li> -->
+                                <!-- <li>{{ ingrediant1.ingrediant.ingrediant }}: {{ ingrediant1 }}</li> -->
                             </ul>
                     
                         </div>
                     </td>
-                </tr>
-
-                
+                </tr>          
             </table>
         </div>
 
