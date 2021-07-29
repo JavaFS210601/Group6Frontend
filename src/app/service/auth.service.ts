@@ -52,19 +52,20 @@ export class AuthService {
     return true;
   }
 
-  login(username: string, password: string): Observable<User> {
-    console.log("Helle from login method" +username + password);
-    const formData = new FormData()
-    formData.append("username" , username);
-    formData.append("password", password);
-    //return this.http.post<User>(`${this.serverUrl}/authenticate`, { username, password } )
-    return this.http.post<User>(this.serverUrl + "/authenticate",formData) 
-      .pipe(
-        tap(data => {
-          localStorage.setItem("username", data.username);
-          console.log(data.username);
-        })
-      );
+  // Deprecated 
+  // login(username: string, password: string): Observable<User> {
+  //   console.log("Helle from login method" +username + password);
+  //   const formData = new FormData()
+  //   formData.append("username" , username);
+  //   formData.append("password", password);
+  //   //return this.http.post<User>(`${this.serverUrl}/authenticate`, { username, password } )
+  //   return this.http.post<User>(this.serverUrl + "/authenticate",formData) 
+  //     .pipe(
+  //       tap(data => {
+  //         localStorage.setItem("username", data.username);
+  //         console.log(data.username);
+  //       })
+  //     );
     // .pipe(map(user => {
     //     // store user details and jwt token in local storage to keep user logged in between page refreshes
     //     console.log(user.username);
@@ -73,17 +74,26 @@ export class AuthService {
     //    // this.userSubject.next(user);
     //     return user;
     // }));
-  }
+  /// }
 
   register( user: User) : Observable<User> {
-      return this.http.post<User>( this.serverUrl+"/register",  user , this.httpOptions);
+  
+    //const data = JSON.stringify(user)
+    
+    return this.http.post<User>( "http://localhost:8088/boot/users/register",  user ,this.httpOptions) 
+    // .pipe(
+    //   tap(_ => this.log(`deleted_user user=${user}`)),
+    //   catchError(this.handleError<User>('deleteUser'))
+    // );
+    
+    console.log(user);
 
   }
 
   //here is the method to create a new user this might need to be adjusted
-  register(model: any){
+  register2(model: any){
     let headers = new HttpHeaders({
-      'formData': this.formData
+      //'formData': this.formData
 //this section is most likely wrong I am not 100 percent sure what to do
     });
     //options this is probably wrong
