@@ -7,13 +7,13 @@
   
   <div class="input-wrap">
     <label for="pseudo">First Name</label>
-    <input type="text" id="pseudo" placeholder="Type your first name" name="firstname" ngModel required #first_name="ngModel">
+    <input type="text" id="pseudo" placeholder="Type your first name" name="first_name" ngModel required #first_name="ngModel">
     <span class="clear">x</span>
   </div>
 
   <div class="input-wrap">
     <label for="pseudo">Last name</label>
-    <input type="text" id="pseudo" placeholder="Type your last name" name="lastname" ngModel required #last_name="ngModel">
+    <input type="text" id="pseudo" placeholder="Type your last name" name="last_name" ngModel required #last_name="ngModel">
     <span class="clear">x</span>
   </div>
 
@@ -45,6 +45,8 @@
 <input type="submit" id="submit" value="Create Account" [disabled]="f.invalid">
 </div>
   </form>
+
+
 </body>
 
 
