@@ -15,7 +15,11 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 
 import { LoginComponent } from './component/login/login.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
+
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+
 import { DashboardRecipeComponent } from './component/dashboard-recipe/dashboard-recipe.component';
+
 
 
 
@@ -48,7 +52,7 @@ const routes: Routes = [
   },
   {
     path:'upload',
-    component: UploadComponent  // replace this with about component
+    component: UploadComponent  // replace this with recipe upload component
   },
   {
     path:'about',
@@ -64,11 +68,15 @@ const routes: Routes = [
   },
   {
     path:'login',
-    component: LoginComponent  // replace this with frequently asked questions component
+    component: LoginComponent  // replace this with frequently login component
   },
   {
     path:'sign-up',
-    component: SignUpComponent  // replace this with frequently asked questions component
+    component: SignUpComponent  // replace this with sign up component
+  },
+  {
+  path:'reset-password',
+  component: ResetPasswordComponent  // replace this with reset password component
   },
   {
 

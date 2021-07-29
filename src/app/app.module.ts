@@ -30,6 +30,12 @@ import { DashboardLeftbarComponent } from './component/dashboard-leftbar/dashboa
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { DeleteUserButtonComponent } from './component/delete-user-button/delete-user-button.component';
 
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 
 @NgModule({
@@ -53,7 +59,8 @@ import { DeleteUserButtonComponent } from './component/delete-user-button/delete
     DashboardRecipeComponent,
     DashboardLeftbarComponent,
     SignUpComponent,
-    DeleteUserButtonComponent
+    DeleteUserButtonComponent,
+    ResetPasswordComponent
 
 
     //declare other components here 
@@ -65,8 +72,9 @@ import { DeleteUserButtonComponent } from './component/delete-user-button/delete
     HttpClientModule,
     BrowserAnimationsModule,
     SharedBootstrapModule,
-    RatingModule.forRoot()
-    
+    RatingModule.forRoot(),
+    TypeaheadModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

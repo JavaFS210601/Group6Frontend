@@ -16,7 +16,7 @@
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="#">
+		<form #f="ngForm" (ngSubmit)="onSubmit(f)">
 			<h1>Sign in</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -24,10 +24,12 @@
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your account</span>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
+			<input type="username" placeholder="Username" name="username" ngModel required #username="ngModel"/>
+			<input type="password" placeholder="Password" name="password" ngModel required #password="ngModel"/>
+			<button routerLink="/reset-password">Forgot your password?</button>
+
+   <!--added a disabled so you cant press the button unless the form is complete basically info in the two fields-->
+			<button class="signInButton" id="signIn" [disabled]="f.invalid">Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">
@@ -35,7 +37,7 @@
 			<div class="overlay-panel overlay-left">
 				<h1>Welcome Back!</h1>
 				<p>To keep connected with us please login with your personal info</p>
-				<button class="signInButton" id="signIn">Sign In</button>
+				<button >Sign In ︁</button>
 			</div>
 			<div class="overlay-panel overlay-right">
 				<h1>Welcome, Friend!</h1>
