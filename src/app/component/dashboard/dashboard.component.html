@@ -1,4 +1,4 @@
-<div class="row" style="height:560px; background-color: aquamarine;">
+<div class="row" style="height:560px; ">
 
   <div class="col-3" style="width: 100%; height: 100%;">
     <app-dashboard-leftbar></app-dashboard-leftbar>
@@ -6,16 +6,20 @@
   <!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\         -->
 
 
-<div class="col-6 main" style="background-color: aquamarine;">
+<div class="col-6 main" style="">
 
-  
+  <div> Welcome! Ken , Chani, Justin, PHin </div>
 </div>
 
-<div class="col-3" style="background-color: rgb(149, 149, 161);">
+<div class="col-3" style="">
 <!-- <a routerLink="/detail/1">Test link for detail page</a> -->
+<div class="right-sidebar">
+
+</div>
+
 <div *ngIf="user">
   <h3>{{user.username | uppercase}} - Details </h3>
-  <h4>id {{ user.user_id }}</h4>
+  <h4>id {{ user.userId }}</h4>
   <div class="row userinfo">
     <div class="row">
       <div class="col-sm-4"> {{user.first_name}}</div>
@@ -27,7 +31,12 @@
       <div class="col-sm-4"> role id: {{ user.role_id.role }}</div>
       <div class="col-sm-4"> recipe id:{{ user.recipe_id }}</div>
     </div>
-
+    <div class="row">
+      
+      <div class="col-sm-4">
+        <app-delete-user-button [user]="user"></app-delete-user-button> </div>
+      
+    </div>
   </div>
 </div>
 </div>

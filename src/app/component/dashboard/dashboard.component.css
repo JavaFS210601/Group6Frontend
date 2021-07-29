@@ -11,3 +11,13 @@
         /* background: url("./../../../assets/pexels-aleksandar-pasaric.jpg" ) no-repeat 100%; */
     
 }
+
+.right-sidebar {
+    font-weight: bold;
+    /* background-image: url("./../../../assets/recipe-sub.jpg"); */
+    
+    color: rgb(0, 0, 0);
+    text-shadow: 2ch;
+    /* background-blend-mode: darken; */
+    background-size: cover;
+}

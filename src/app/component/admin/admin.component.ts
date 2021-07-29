@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hero } from 'src/app/models/Hero';
-import { Ingediant } from 'src/app/models/Ingediant';
+import { Ingrediant } from 'src/app/models/Ingrediant';
 import { Step } from 'src/app/models/Step';
 import { RecipeService } from 'src/app/service/recipe.service';
 import { UserService } from 'src/app/service/user.service';
