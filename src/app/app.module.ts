@@ -28,6 +28,7 @@ import { DashboardRecipeComponent } from './component/dashboard-recipe/dashboard
 import { DashboardLeftbarComponent } from './component/dashboard-leftbar/dashboard-leftbar.component';
 
 import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 
 
@@ -51,7 +52,8 @@ import { SignUpComponent } from './component/sign-up/sign-up.component';
     DashboardComponent,
     DashboardRecipeComponent,
     DashboardLeftbarComponent,
-    SignUpComponent
+    SignUpComponent,
+    ResetPasswordComponent
 
 
     //declare other components here 

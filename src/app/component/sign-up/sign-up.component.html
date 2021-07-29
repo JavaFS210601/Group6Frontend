@@ -2,46 +2,47 @@
 <body>
   
 
-<form id="signUp-form">
+<form id="signUp-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
   <h2>- Sign Up -</h2>
   
   <div class="input-wrap">
     <label for="pseudo">First Name</label>
-    <input type="text" id="pseudo" placeholder="Type your first name" required>
+    <input type="text" id="pseudo" placeholder="Type your first name" name="firstname" ngModel required #first_name="ngModel">
     <span class="clear">x</span>
   </div>
 
   <div class="input-wrap">
     <label for="pseudo">Last name</label>
-    <input type="text" id="pseudo" placeholder="Type your last name" required>
+    <input type="text" id="pseudo" placeholder="Type your last name" name="lastname" ngModel required #last_name="ngModel">
     <span class="clear">x</span>
   </div>
 
   <div class="input-wrap">
     <label for="pseudo">Username</label>
-    <input type="text" id="pseudo" placeholder="Type your username" required>
+    <input type="text" id="pseudo" placeholder="Type your username" name="username" ngModel required #username="ngModel">
     <span class="clear">x</span>
   </div>
   
-  <div class="input-wrap">
+  <!--We dont have email in the database-->
+  <!-- <div class="input-wrap">
     <label for="email">Email</label>
-    <input type="email" id="email" placeholder="mail@host.com" required>
+    <input type="email" id="email" placeholder="mail@host.com" name="email" ngModel required #email="ngModel">
     <span class="clear">x</span>
   </div>
-  
+   -->
   <div class="input-wrap">
     <label for="password">Password</label>
-    <input type="password" id="password" placeholder="Type your password" required>
+    <input type="password" id="password" placeholder="Type your password" name="password" ngModel required #password="ngModel">
     <span class="clear">x</span>
   </div>
-
+<!--two password fields so we can confirm that they match-->
   <div class="input-wrap">
     <label for="password">Confirm Password</label>
-    <input type="password" id="password" placeholder="Confirm your password" required>
+    <input type="password" id="password" placeholder="Confirm your password" name="password" ngModel required #password="ngModel">
     <span class="clear">x</span>
   
-
-<input type="submit" id="submit" value="Create Account">
+<!--added a disabled so you cant press the button unless the form is complete basically info in the two fields-->
+<input type="submit" id="submit" value="Create Account" [disabled]="f.invalid">
 </div>
   </form>
 </body>

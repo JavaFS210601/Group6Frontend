@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -14,5 +15,8 @@ export class LoginComponent implements OnInit {
 
    // this.userService.
   }
-
+  onSubmit(f: NgForm) {
+    console.log(f.value);  // { first: '', last: '' }
+    console.log(f.valid);  // false
+  }
 }
