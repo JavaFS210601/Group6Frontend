@@ -9,7 +9,7 @@
         <span class="badge" style="color: black;">{{user.user_id }}</span>
       </a> <span> username:{{ user.username }}</span>
       <span> firstname:{{ user.first_name }} </span> <span> lastname:{{ user.last_name}}</span>
-
+      <app-delete-user-button [user]="user"></app-delete-user-button>
     </div>
 
   </div>

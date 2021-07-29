@@ -31,7 +31,12 @@
       <div class="col-sm-4"> role id: {{ user.role_id.role }}</div>
       <div class="col-sm-4"> recipe id:{{ user.recipe_id }}</div>
     </div>
-
+    <div class="row">
+      
+      <div class="col-sm-4">
+        <app-delete-user-button [user]="user"></app-delete-user-button> </div>
+      
+    </div>
   </div>
 </div>
 </div>

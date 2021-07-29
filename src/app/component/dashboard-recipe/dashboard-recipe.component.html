@@ -20,13 +20,22 @@
                     <td>Inspiration:</td>
                     <td>By:</td>
                 </tr>
-                <tr *ngFor="let recipe of recipes">
-                    <td>#{{ recipe.recipeId }}:</td>
-                    <td>{{ recipe.name }}</td>
-                    <td>{{ recipe.description }}</td>
-                    <td>{{ recipe.category }}</td>
-                    <td>{{ recipe.inspiration }}</td>
-                    <td>userId: {{ recipe.userId }}</td>
+                <!-- <tr *ngFor="let recipe of recipeExtRef">
+                    <td>#{{ recipe.recipeIngrediants.ingrediant.amount }}:</td>
+                    <td>{{ recipe.recipeIngrediants.ingrediant.ingrediantId }}</td>
+                    <td>{{ recipe.recipeIngrediants.recipe.recipe_id }}</td>
+                    <td>{{ recipe.recipeIngrediants.ingrediant.ingrediant }}</td>
+                   <td>{{ recipe.name }}</td>
+                   
+                </tr> -->
+                 <tr  *ngIf="ingrediant1">
+                     <td></td>
+                     <td>{{ ingrediant1.ingrediante_id  }}</td>
+                    <td>#{{ ingrediant1.ammount }}:</td>
+                   
+                    <!-- <td>{{ recipe.recipeIngrediants.recipe.recipe_id }}</td>
+                    <td>{{ recipe.recipeIngrediants.ingrediant.ingrediant }}</td> -->
+                  
                 </tr>
             </table>
         </div>
@@ -38,6 +47,10 @@
             <div class="user-icon">user icon</div>
             <div class="user-name">user name</div>
             <div class="user-description">description</div>
+
+            <div class="col-sm-4">
+                <app-delete-user-button [user]="user"></app-delete-user-button> </div>
+              
     </div>
 
 
