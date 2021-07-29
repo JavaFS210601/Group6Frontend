@@ -3,10 +3,10 @@
         <app-dashboard-leftbar></app-dashboard-leftbar>
     </div>
     <!--End of left pannel -->
-    <div class="col-6 main" style="background-color: yellow;">
+    <div class="col-6 main" style="">
 
         <div>
-            <h2>List of Recipe</h2>
+            <h2>List of Recipes</h2>
             <div> # Recipe <span> : 4</span></div> 
 
 
@@ -20,35 +20,37 @@
                     <td>Inspiration:</td>
                     <td>By:</td>
                 </tr>
-                <tr *ngFor="let recipe of recipes">
-                    <td>#{{ recipe.recipeId }}:</td>
-                    <td>{{ recipe.name }}</td>
-                    <td>{{ recipe.description }}</td>
-                    <td>{{ recipe.category }}</td>
-                    <td>{{ recipe.inspiration }}</td>
-                    <td>userId: {{ recipe.userId }}</td>
+                <!-- <tr *ngFor="let recipe of recipeExtRef">
+                    <td>#{{ recipe.recipeIngrediants.ingrediant.amount }}:</td>
+                    <td>{{ recipe.recipeIngrediants.ingrediant.ingrediantId }}</td>
+                    <td>{{ recipe.recipeIngrediants.recipe.recipe_id }}</td>
+                    <td>{{ recipe.recipeIngrediants.ingrediant.ingrediant }}</td>
+                   <td>{{ recipe.name }}</td>
+                   
+                </tr> -->
+                 <tr  *ngIf="ingrediant1">
+                     <td></td>
+                     <td>{{ ingrediant1.ingrediante_id  }}</td>
+                    <td>#{{ ingrediant1.ammount }}:</td>
+                   
+                    <!-- <td>{{ recipe.recipeIngrediants.recipe.recipe_id }}</td>
+                    <td>{{ recipe.recipeIngrediants.ingrediant.ingrediant }}</td> -->
+                  
                 </tr>
             </table>
         </div>
 
-        <!-- <a routerLink="/detail/1">Test link for detail page</a> -->
-        <!-- <div *ngIf="user">
-      <h3>{{user.username | uppercase}} - Details </h3>
-      <h4>id {{ user.user_id }}</h4>
-      <div class="row userinfo">
-        <div class="row">
-          <div class="col-sm-4"> {{user.first_name}}</div>
-          <div class="col-sm-4"> {{user.last_name}}</div>
-  
-        </div>
-        <div class="row">
-  
-          <div class="col-sm-4"> role id: {{ user.role_id.role }}</div>
-          <div class="col-sm-4"> recipe id:{{ user.recipe_id }}</div>
-        </div>
-  
-      </div>
-    </div> -->
+       
+    </div>
+
+    <div class="col-3 right-sidebar">
+            <div class="user-icon">user icon</div>
+            <div class="user-name">user name</div>
+            <div class="user-description">description</div>
+
+            <div class="col-sm-4">
+                <app-delete-user-button [user]="user"></app-delete-user-button> </div>
+              
     </div>
 
 

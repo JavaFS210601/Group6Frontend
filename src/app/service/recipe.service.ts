@@ -4,29 +4,44 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { User } from '../models/User';
 import { Step } from '../models/Step';
-import { Recipe } from '../models/Recipe';
+import { Recipe, RecipeExt } from '../models/Recipe';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
 
-  private ChefRecipesrl = 'http://localhost:8081/P2-ChefRecipes/users';
+  private ChefRecipesrl = 'http://localhost:8088/boot/recipes';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private http: HttpClient) { }
 
-  getRecipeById(id: number): Observable<Recipe> | undefined{
-    return this.http.get<Recipe>(this.ChefRecipesrl) 
+  getRecipeExtById(id: number): Observable<RecipeExt> {
+    return this.http.get<RecipeExt>(this.ChefRecipesrl) 
     .pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<Recipe>(`getHero id=${id}`)) 
+      catchError(this.handleError<RecipeExt>(`getRecipeExt id=${id}`)) 
     );
   }
 
-  getRecipes(): Observable<Recipe[]> | undefined {
+  getRecipesExt(): Observable<RecipeExt[]>  {
+    return this.http.get<RecipeExt[]>(this.ChefRecipesrl)
+    .pipe(
+      catchError(this.handleError<RecipeExt[]>('getRecipesExt', []))
+    );
+  }
+
+  getRecipeById(id: number): Observable<Recipe> {
+    return this.http.get<Recipe>(this.ChefRecipesrl) 
+    .pipe(
+      tap(_ => this.log(`fetched hero id=${id}`)),
+      catchError(this.handleError<Recipe>(`getRecipe id=${id}`)) 
+    );
+  }
+
+  getRecipes(): Observable<Recipe[]>  {
     return this.http.get<Recipe[]>(this.ChefRecipesrl)
     .pipe(
       catchError(this.handleError<Recipe[]>('getUsers', []))

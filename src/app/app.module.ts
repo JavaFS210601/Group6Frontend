@@ -28,6 +28,7 @@ import { DashboardRecipeComponent } from './component/dashboard-recipe/dashboard
 import { DashboardLeftbarComponent } from './component/dashboard-leftbar/dashboard-leftbar.component';
 
 import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { DeleteUserButtonComponent } from './component/delete-user-button/delete-user-button.component';
 
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
@@ -58,6 +59,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardRecipeComponent,
     DashboardLeftbarComponent,
     SignUpComponent,
+    DeleteUserButtonComponent,
     ResetPasswordComponent
 
 

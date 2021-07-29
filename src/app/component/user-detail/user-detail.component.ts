@@ -16,7 +16,8 @@ export class UserDetailComponent implements OnInit {
   rate = 7;
   isReadonly = false;
  
- 
+  username : string = "" ;
+ password: string = "";
 
   userId : string | null;
  //userRef : Observable<User>;
@@ -33,6 +34,7 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+
   }
 
   confirmSelection(event: KeyboardEvent) {
