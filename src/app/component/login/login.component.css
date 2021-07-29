@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
+/*This is ng valid is styling for the forms we will using in the sign in page so that if it is valid the field will be green if the file isnt valid it will be red until the user enters something I will most likely add the same thing in the sign up component as well */
+
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42a948; /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442; /* red */
+}
+
 * {
   box-sizing: border-box;
 }
@@ -54,6 +65,7 @@ button {
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  margin: 5px;
 }
 
 button:active {

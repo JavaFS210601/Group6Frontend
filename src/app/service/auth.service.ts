@@ -14,7 +14,7 @@ export class AuthService {
 
   //private isLogin: boolean;
 
-  private serverUrl = 'http://localhost:8081/HelloSpringMVC/avengers';
+  private serverUrl = 'http://localhost:8088/boot/users';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -49,7 +49,7 @@ export class AuthService {
     return true;
   }
 
-  login(username: string, password: string) {
+  login(username: string, password: string) : Observable<User>{
     return this.http.post<User>(`${this.serverUrl}/users/authenticate`, { username, password })
         .pipe(map(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
