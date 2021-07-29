@@ -1,15 +1,38 @@
-<div class="row" style="height:560px; background-color: aquamarine;">
-
+<div class="row" style="height:560px;">
     <div class="col-3" style="width: 100%; height: 100%;">
-      <app-dashboard-leftbar></app-dashboard-leftbar>
-    </div><!--End of left pannel -->
-    <!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\         -->
-  
-  
-  <div class="col-6 main" style="background-color: aquamarine;">
-  
-    <!-- <a routerLink="/detail/1">Test link for detail page</a> -->
-    <!-- <div *ngIf="user">
+        <app-dashboard-leftbar></app-dashboard-leftbar>
+    </div>
+    <!--End of left pannel -->
+    <div class="col-6 main" style="background-color: yellow;">
+
+        <div>
+            <h2>List of Recipe</h2>
+            <div> # Recipe <span> : 4</span></div> 
+
+
+            <table>
+                <th></th>
+                <tr>
+                    <td></td>
+                    <td>Recipe:</td>
+                    <td>About:</td>
+                    <td>Category:</td>
+                    <td>Inspiration:</td>
+                    <td>By:</td>
+                </tr>
+                <tr *ngFor="let recipe of recipes">
+                    <td>#{{ recipe.recipeId }}:</td>
+                    <td>{{ recipe.name }}</td>
+                    <td>{{ recipe.description }}</td>
+                    <td>{{ recipe.category }}</td>
+                    <td>{{ recipe.inspiration }}</td>
+                    <td>userId: {{ recipe.userId }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- <a routerLink="/detail/1">Test link for detail page</a> -->
+        <!-- <div *ngIf="user">
       <h3>{{user.username | uppercase}} - Details </h3>
       <h4>id {{ user.user_id }}</h4>
       <div class="row userinfo">
@@ -26,12 +49,8 @@
   
       </div>
     </div> -->
-  </div>
-  
-  <div class="col-3" style="background-color: rgb(149, 149, 161);">
-  Something
-  </div>
-  
-  </div>
-  
-  
+    </div>
+
+
+
+</div>

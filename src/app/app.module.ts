@@ -28,7 +28,12 @@ import { DashboardRecipeComponent } from './component/dashboard-recipe/dashboard
 import { DashboardLeftbarComponent } from './component/dashboard-leftbar/dashboard-leftbar.component';
 
 import { SignUpComponent } from './component/sign-up/sign-up.component';
+
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -65,8 +70,9 @@ import { ResetPasswordComponent } from './component/reset-password/reset-passwor
     HttpClientModule,
     BrowserAnimationsModule,
     SharedBootstrapModule,
-    RatingModule.forRoot()
-    
+    RatingModule.forRoot(),
+    TypeaheadModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
