@@ -56,7 +56,7 @@ constructor(private userService: UserService , private recipeService: RecipeServ
   
   
     this.recipeExtRef = this.recipeService.getRecipesExt()
-  
+    this.recipeParser()
     this.ingrediantParser();
 
 } 
@@ -73,6 +73,8 @@ constructor(private userService: UserService , private recipeService: RecipeServ
          + data[0].category ); 
   
       } 
+
+     
     )
   }
 

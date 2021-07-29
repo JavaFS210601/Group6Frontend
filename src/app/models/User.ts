@@ -2,7 +2,7 @@ import { Role } from "./Role";
 
 export interface User {
     // Each of these field name has to match the json data (variable names)  
-    user_id: number;
+    userId: number;
     username: string;
     password: string;
     first_name: string;

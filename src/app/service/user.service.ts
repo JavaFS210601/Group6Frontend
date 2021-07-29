@@ -19,11 +19,13 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+
+
   /** DELETE: delete the hero from the server */
   deleteUser(user: User | undefined): Observable<User> {
-    const url = `${this.ChefRecipesrl}/${user}`;
-
-    return this.http.delete<User>(url, this.httpOptions).pipe(
+    const url = `${this.ChefRecipesrl}/delete/${user?.userId}`;
+    //this.httpOptions.headers.append()
+    return this.http.delete<User>(url,  this.httpOptions).pipe(
       tap(_ => this.log(`deleted_user user=${user}`)),
       catchError(this.handleError<User>('deleteUser'))
     );
