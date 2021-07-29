@@ -15,6 +15,7 @@ export class AuthService {
   //private isLogin: boolean;
 
   private serverUrl = 'http://localhost:8088/boot/users';
+  private createUrl = 'http://localhost:8088/boot/register';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -59,6 +60,16 @@ export class AuthService {
         }));
   }
 
+  //here is the method to create a new user this might need to be adjusted
+  register(model: any){
+    let headers = new HttpHeaders({
+      'formData': this.formData
+//this section is most likely wrong I am not 100 percent sure what to do
+    });
+    //options this is probably wrong
+    let options = {headers:headers};
+    return this.http.post(this.createUrl + 'create', model, options);
+  }
 
   private log(message: string) {
    //this.messageService.add(`HeroService: ${message}`);
