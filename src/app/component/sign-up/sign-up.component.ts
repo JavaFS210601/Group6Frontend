@@ -15,6 +15,7 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  
   users: User[] = [];
 
    //tried to inject the serivce
@@ -55,6 +56,7 @@ const registerObserver = {
       this.user.first_name = f.value.first_name;
       this.user.last_name = f.value.last_name;
       this.user.password = f.value.password;
+      
       this.authservice.register(this.user)
       .subscribe(newUser => {
         this.users.push(newUser);
