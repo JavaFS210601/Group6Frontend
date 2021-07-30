@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
+import { RecipeDTO } from 'src/app/models/Recipe';
+import { RecipeService } from 'src/app/service/recipe.service';
 import { FormControl, FormGroup, FormArray, FormBuilder  } from '@angular/forms';
 
 @Component({
@@ -7,6 +10,20 @@ import { FormControl, FormGroup, FormArray, FormBuilder  } from '@angular/forms'
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
+
+  //Example of a RecipeDTO:
+  recipeDTO : RecipeDTO = {
+    recipe_id: null,
+    name: "recipe 1 test",
+    description: "recipe 1 testing",
+    category: "coco",
+    inspiration: "cool",
+    userId: 1,
+    ingrediants:" coco-1b, gogo-2b, pojo-1b, jopo-10b",
+    steps: "step1_stpe2_step2_step4"
+  }
+
+
   ingredientCtrl = new FormControl();
   myForm = new FormGroup({
     ingredient: this.ingredientCtrl
@@ -73,14 +90,21 @@ export class UploadComponent implements OnInit {
     'Ground turkey'
   ]
 
+
+
+     
+
   ingForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private recipeService : RecipeService) {
     this.ingForm = this.fb.group({
       ingredients: this.fb.array([])
     });}
 
   ngOnInit() {
+    this.recipeService.insertRecipe(this.recipeDTO).subscribe(
+      data => console.log("this is recipe dto data" +data)
+    )
     this.ingForm = this.fb.group({
       ingredients: this.fb.array([])
     });
