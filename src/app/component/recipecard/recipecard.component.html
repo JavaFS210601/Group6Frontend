@@ -1,16 +1,31 @@
-<div class="container">
-
-        <!-- <tr *ngFor="let recipe of recipes">
-            
-        <p>Recipe #{{ recipe.recipeId }}:</p>
-        <p>{{ recipe.name }}</p>
-        <p>About the recipe: {{ recipe.description }}</p>
-        <p>Category: {{ recipe.category }}</p>
-        <p>Their inspiration for this recipe: {{ recipe.inspiration }}</p>
-        <p>By userId: {{ recipe.userId }}</p>
-
+<form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+  <div formArrayName="employees">
+    <div *ngFor="let employee of employees().controls; let empIndex=index">
+      <div
+        [formGroupName]="empIndex"
+        style=" padding: 10px; width: 1000px; margin: 5px;"
+      >
+        {{empIndex}}
         <br>
-        <br>
-        </tr> -->
+        igredient:
+        <input type="text" formControlName="ingredient" />
+        Amount and Measurment:
+        <input type="text" formControlName="amount" />
 
-</div>
+        <button (click)="removeEmployee(empIndex)">Remove</button>
+
+        <div formArrayName="skills">
+          <div
+            *ngFor="let skill of employeeSkills(empIndex).controls; let skillIndex=index">
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" (click)="addEmployee()">Add Employee</button>
+  </div>
+</form>
+
+{{this.empForm.value | json}}
+
+<br /><br />
+
