@@ -30,7 +30,7 @@
                 <input id="category" type="text" class="col-sm-6 form-control" placeholder="What category does your recipe belong in?">
             </div>               
             <br>
-            <form [formGroup]="myForm">
+            <!-- <form [formGroup]="myForm">
                 <input formControlName="ingredient"
                        [typeahead]="ingredients"
                        [typeaheadOptionsLimit]="10"
@@ -38,9 +38,7 @@
                        placeholder="Select and add ingredients"
                        class="form-control"
                        cols="60">
-              </form>
-              <br>
-              <br>
+              </form> -->
               <form [formGroup]="ingForm" (ngSubmit)="onSubmit()">
                 <div formArrayName="ingredients">
                   <div *ngFor="let ingredient of ingredients1().controls; let ingIndex=index">
@@ -48,8 +46,7 @@
                       [formGroupName]="ingIndex"
                       style=" padding: 10px; width: 1000px; margin: 5px;"
                     >
-                      {{ingIndex}}
-                      <br>
+                      <!-- {{ingIndex}} -->
                       igredient:
                       <input type="text" formControlName="ingredient" placeholder="Ingredient"/>
                       Amount and Measurment:
@@ -63,9 +60,6 @@
               </form>
               
               <!-- {{this.empForm.value | json}} -->
-              
-              <br /><br />
-              <br>
               <br>
             <div class="row">
                 <h6 class="col-sm-3">Recipe Descripition</h6> 
