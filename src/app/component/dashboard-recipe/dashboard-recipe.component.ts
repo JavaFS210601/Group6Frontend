@@ -36,9 +36,11 @@ user: User | undefined;
 userRef: Observable<User[]>;
 
 recipe: Recipe | undefined;
-recipeRef: Observable<Recipe []>;
+// recipeRef: Observable<Recipe []>;
+recipeRef2: Observable<Recipe []>;
 
-recipeExtRef: Observable<RecipeExt []>;
+// recipeExtRef: Observable<RecipeExt []>;
+recipeExtRef2: Observable<RecipeExt []>;
 
 ingrediant1: Ingrediant | undefined;
 //ingrediantExt1: IngrediantExt;
@@ -49,45 +51,56 @@ constructor(private userService: UserService , private recipeService: RecipeServ
     data => this.user = data
   )
 
-  this.recipeRef = this.recipeService.getRecipes();
+  // this.recipeRef = this.recipeService.getRecipes();
 
   
+  this.recipeRef2=this.recipeService.getRecipes();
+  this.recipeExtRef2=this.recipeService.getRecipesExt();
   
-    this.recipeExtRef = this.recipeService.getRecipesExt()
-    this.recipeParser()
-    this.ingrediantParser();
+    // this.recipeExtRef = this.recipeService.getRecipesExt()
+    // this.recipeParser()
+    // this.ingrediantParser();
 
 } 
 
   ngOnInit(): void {
   }
 
-  recipeParser(){
-    this.recipeRef.subscribe(
-      data =>  {
-        console.log("!!! recipes recieved "
-        + data[0].recipe_id  + " " + data[0].description + " "
-         +" inspiration:" + data[0].inspiration  + " "  + data[0].name  + " "
-         + data[0].category ); 
-          this.recipe = data[0];
-      } 
+  recipe2Parser(){
+    this.recipeRef2.subscribe(
+      data => {
+        console.log("all recipes" 
+        + data[0] + " " + data[1])
+      }
+    )
+  }
+
+  // recipeParser(){
+  //   this.recipeRef.subscribe(
+  //     data =>  {
+  //       console.log("!!! recipes recieved "
+  //       + data[0].recipe_id  + " " + data[0].description + " "
+  //        +" inspiration:" + data[0].inspiration  + " "  + data[0].name  + " "
+  //        + data[0].category ); 
+  //         this.recipe = data[0];
+  //     } 
 
      
-    )
-  }
+  //   )
+  // }
 
-  ingrediantParser(){
-    this.recipeExtRef.subscribe(
-      data =>  {
-        console.log("!!! recipes recieved "
-        + " amount:" +  data[0]
-          ); 
+  // ingrediantParser(){
+  //   this.recipeExtRef.subscribe(
+  //     data =>  {
+  //       console.log("!!! recipes recieved "
+  //       + " amount:" +  data[0]
+  //         ); 
            
-          console.log(data[0]['recipeIngrediants'] );
-          let subvalue = data[0]['recipeIngrediants']
-          this.ingrediant1 =  subvalue[0]['ingrediant'] ;
-          console.log(this.ingrediant1.ammount );
-      } 
-    )
-  }
+  //         console.log(data[0]['recipeIngrediants'] );
+  //         let subvalue = data[0]['recipeIngrediants']
+  //         this.ingrediant1 =  subvalue[0]['ingrediant'] ;
+  //         console.log(this.ingrediant1.ammount );
+  //     } 
+  //   )
+  // }
 }
