@@ -39,7 +39,34 @@
                        class="form-control"
                        cols="60">
               </form>
-            <br>
+              <br>
+              <br>
+              <form [formGroup]="ingForm" (ngSubmit)="onSubmit()">
+                <div formArrayName="ingredients">
+                  <div *ngFor="let ingredient of ingredients1().controls; let ingIndex=index">
+                    <div
+                      [formGroupName]="ingIndex"
+                      style=" padding: 10px; width: 1000px; margin: 5px;"
+                    >
+                      {{ingIndex}}
+                      <br>
+                      igredient:
+                      <input type="text" formControlName="ingredient" placeholder="Ingredient"/>
+                      Amount and Measurment:
+                      <input type="text" formControlName="amount" placeholder="Amount"/>
+              
+                      <button (click)="removeIngredient(ingIndex)">---Remove Ingredient</button>
+                    </div>
+                  </div>
+                  <button type="button" (click)="addIngredient()">Add Ingredient</button>
+                </div>
+              </form>
+              
+              <!-- {{this.empForm.value | json}} -->
+              
+              <br /><br />
+              <br>
+              <br>
             <div class="row">
                 <h6 class="col-sm-3">Recipe Descripition</h6> 
                 <textarea id="description" class="form-control" placeholder="Description" rows="3" cols="60"></textarea>

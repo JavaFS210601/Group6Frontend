@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+
 import { RecipeDTO } from 'src/app/models/Recipe';
 import { RecipeService } from 'src/app/service/recipe.service';
+import { FormControl, FormGroup, FormArray, FormBuilder  } from '@angular/forms';
 
 @Component({
   selector: 'app-upload',
@@ -88,12 +89,47 @@ export class UploadComponent implements OnInit {
     'Ground beef',
     'Ground turkey'
   ]
-  constructor(private recipeService : RecipeService) { }
 
-  ngOnInit(): void {
-      this.recipeService.insertRecipe(this.recipeDTO).subscribe(
-        data => console.log("this is recipe dto data" +data)
-      )
+
+
+     
+
+  ingForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private recipeService : RecipeService) {
+    this.ingForm = this.fb.group({
+      ingredients: this.fb.array([])
+    });}
+
+  ngOnInit() {
+    this.recipeService.insertRecipe(this.recipeDTO).subscribe(
+      data => console.log("this is recipe dto data" +data)
+    )
+    this.ingForm = this.fb.group({
+      ingredients: this.fb.array([])
+    });
   }
 
+  ingredients1(): FormArray {
+    return this.ingForm.get('ingredients') as FormArray;
+  }
+
+  newIngredient(): FormGroup {
+    return this.fb.group({
+      ingredient: '',
+      amount: '',
+    });
+  }
+
+  addIngredient() {
+    this.ingredients1().push(this.newIngredient());
+  }
+
+  removeIngredient(ingIndex: number) {
+    this.ingredients1().removeAt(ingIndex);
+  }
+
+  onSubmit() {
+    console.log(this.ingForm.value);
+  }
 }
