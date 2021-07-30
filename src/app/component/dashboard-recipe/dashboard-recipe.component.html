@@ -19,26 +19,30 @@
                     <td>Category:</td>
                     <td>Inspiration:</td>
                     <td>ingrediants:</td>
+                    <td>steps:</td>
                 </tr>
-                <!-- <tr *ngFor="let recipe of recipeExtRef">
-                    <td>#{{ recipe.recipeIngrediants.ingrediant.amount }}:</td>
-                    <td>{{ recipe.recipeIngrediants.ingrediant.ingrediantId }}</td>
-                    <td>{{ recipe.recipeIngrediants.recipe.recipe_id }}</td>
-                    <td>{{ recipe.recipeIngrediants.ingrediant.ingrediant }}</td>
-                   <td>{{ recipe.name }}</td>
-                   
-                </tr> -->
-                <tr *ngFor="let recipe of recipeRef2 | async">
+     
+                <tr *ngFor="let recipe of recipeExtRef | async">
                     <td></td>
                     <td>{{ recipe.name  }}</td>
                     <td>{{recipe.description }}</td>
                     <td>{{recipe.category}}</td>
                     <td>{{ recipe.inspiration }}</td>
+                    <!-- <td>{{ recipe.ingrediants}}</td> -->
                     <td> 
-                        <div  *ngFor="let ingrediant1 of recipeExtRef2 | async">
-                            <ul>
-                                <!-- <li>{{ ingrediant1.ingrediante_id  }}</li> -->
-                                <!-- <li>{{ ingrediant1.ingrediant.ingrediant }}: {{ ingrediant1 }}</li> -->
+                        <div  *ngFor="let ingrediant of recipe.ingrediants ">
+                            <ul >
+                                <li>{{ ingrediant.ammount}} {{ingrediant.ingrediant}}</li>
+                                <!-- <li>{{ ingrediant.ingrediant }}: {{ ingrediant.ammount }}</li> -->
+                            </ul>
+                    
+                        </div>
+                    </td>
+                    <td> 
+                        <div  *ngFor="let step of recipe.steps ">
+                            <ul >
+                                
+                                <li>{{ step.step }}</li>
                             </ul>
                     
                         </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { RecipeDTO } from 'src/app/models/Recipe';
+import { RecipeService } from 'src/app/service/recipe.service';
 
 @Component({
   selector: 'app-upload',
@@ -7,6 +9,20 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
+
+  //Example of a RecipeDTO:
+  recipeDTO : RecipeDTO = {
+    recipe_id: null,
+    name: "recipe 1 test",
+    description: "recipe 1 testing",
+    category: "coco",
+    inspiration: "cool",
+    userId: 1,
+    ingrediants:" coco-1b, gogo-2b, pojo-1b, jopo-10b",
+    steps: "step1_stpe2_step2_step4"
+  }
+
+
   ingredientCtrl = new FormControl();
   myForm = new FormGroup({
     ingredient: this.ingredientCtrl
@@ -72,9 +88,12 @@ export class UploadComponent implements OnInit {
     'Ground beef',
     'Ground turkey'
   ]
-  constructor() { }
+  constructor(private recipeService : RecipeService) { }
 
   ngOnInit(): void {
+      this.recipeService.insertRecipe(this.recipeDTO).subscribe(
+        data => console.log("this is recipe dto data" +data)
+      )
   }
 
 }
