@@ -58,8 +58,22 @@
                   <button type="button" (click)="addIngredient()">Add Ingredient</button>
                 </div>
               </form>
+
+            <br>
+            <!--This is the typehead for the api method is in the recipe service and the rest is in the upload.ts-->
+            <!-- <form class="iAPI" [formGroup]="myForm">
+                <input formControlName="ingredient"
+                       [typeahead]={{apifood}}
+                       [typeaheadOptionsLimit]="10"
+                       [typeaheadMinLength]="0"
+                       placeholder="Select and add ingredients form API"
+                       class="form-control"
+                       cols="60">
+              </form> -->
+
               
               <!-- {{this.empForm.value | json}} -->
+
               <br>
             <div class="row">
                 <h6 class="col-sm-3">Recipe Descripition</h6> 

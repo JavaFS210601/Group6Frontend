@@ -4,11 +4,15 @@ import { RecipeDTO } from 'src/app/models/Recipe';
 import { RecipeService } from 'src/app/service/recipe.service';
 import { FormControl, FormGroup, FormArray, FormBuilder  } from '@angular/forms';
 
+
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css']
 })
+
+
+
 export class UploadComponent implements OnInit {
 
   //Example of a RecipeDTO:
@@ -89,6 +93,24 @@ export class UploadComponent implements OnInit {
     'Ground beef',
     'Ground turkey'
   ]
+
+
+  //empty list for api 
+  apiFood =[]
+
+  //was taken fromthe getFoods method in the reciepe service
+  foods: [description: any] | undefined;
+  constructor(recipeService :RecipeService) {
+    recipeService.getFood().subscribe(
+      response =>{
+       
+this.foods = response['foods'];
+console.log(response['foods'][0].description)
+      }
+    )
+  }
+
+
 
 
 
