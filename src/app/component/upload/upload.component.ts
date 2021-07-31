@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { RecipeService } from 'src/app/service/recipe.service';
+
 
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css']
 })
+
+
+
 export class UploadComponent implements OnInit {
   ingredientCtrl = new FormControl();
   myForm = new FormGroup({
@@ -72,7 +77,21 @@ export class UploadComponent implements OnInit {
     'Ground beef',
     'Ground turkey'
   ]
-  constructor() { }
+
+  //empty list for api 
+  apiFood =[]
+
+  //was taken fromthe getFoods method in the reciepe service
+  foods: [description: any] | undefined;
+  constructor(recipeService :RecipeService) {
+    recipeService.getFood().subscribe(
+      response =>{
+       
+this.foods = response['foods'];
+console.log(response['foods'][0].description)
+      }
+    )
+  }
 
   ngOnInit(): void {
   }

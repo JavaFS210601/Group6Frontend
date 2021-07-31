@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, ObservableInput, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { User } from '../models/User';
 import { Step } from '../models/Step';
@@ -16,8 +16,25 @@ export class RecipeService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  
+  //got this from the api website https://fdc.nal.usda.gov/api-guide.html#bkmk-8
+  //foods: [description: any] | undefined;
+  foods: [description: any] | undefined;
+  //api here with the key I wil most likely have to interpolate the query in this api Food data from USDA
+  private apiKey = 'TyfoArR5KncmZdQ7kO2KntcjEnDhAoEgU3QGczBv';
+ private apiSearch = 'apple';
+
   constructor(private http: HttpClient) { }
 
+  //Chani trying to make the api call with the method
+  getFood():Observable<any>{
+    //unsure what to put in the wery section in the this is the example I got from the API website
+    
+    //this is the example they give me
+    //https://api.nal.usda.gov/fdc/v1/foods/search?query=apple&pageSize=2&api_key=TyfoArR5KncmZdQ7kO2KntcjEnDhAoEgU3QGczBv
+    //forgot angular is OOP so had to use this keyword thaks Golam
+    return this.http.get<any>('https://api.nal.usda.gov/fdc/v1/foods/search?query='+this.apiSearch+'&pageSize=2&api_key='+this.apiKey)
+  }
   getRecipeExtById(id: number): Observable<RecipeExt> {
     return this.http.get<RecipeExt>(this.ChefRecipesrl) 
     .pipe(
