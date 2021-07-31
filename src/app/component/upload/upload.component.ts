@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+
+import { RecipeDTO } from 'src/app/models/Recipe';
 import { RecipeService } from 'src/app/service/recipe.service';
+import { FormControl, FormGroup, FormArray, FormBuilder  } from '@angular/forms';
 
 
 @Component({
@@ -12,6 +14,20 @@ import { RecipeService } from 'src/app/service/recipe.service';
 
 
 export class UploadComponent implements OnInit {
+
+  //Example of a RecipeDTO:
+  recipeDTO : RecipeDTO = {
+    recipe_id: null,
+    name: "recipe 1 test",
+    description: "recipe 1 testing",
+    category: "coco",
+    inspiration: "cool",
+    userId: 1,
+    ingrediants:" coco-1b, gogo-2b, pojo-1b, jopo-10b",
+    steps: "step1_stpe2_step2_step4"
+  }
+
+
   ingredientCtrl = new FormControl();
   myForm = new FormGroup({
     ingredient: this.ingredientCtrl
@@ -78,6 +94,7 @@ export class UploadComponent implements OnInit {
     'Ground turkey'
   ]
 
+
   //empty list for api 
   apiFood =[]
 
@@ -93,7 +110,48 @@ console.log(response['foods'][0].description)
     )
   }
 
-  ngOnInit(): void {
+
+
+
+
+     
+
+  ingForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private recipeService : RecipeService) {
+    this.ingForm = this.fb.group({
+      ingredients: this.fb.array([])
+    });}
+
+  ngOnInit() {
+    this.recipeService.insertRecipe(this.recipeDTO).subscribe(
+      data => console.log("this is recipe dto data" +data)
+    )
+    this.ingForm = this.fb.group({
+      ingredients: this.fb.array([])
+    });
   }
 
+  ingredients1(): FormArray {
+    return this.ingForm.get('ingredients') as FormArray;
+  }
+
+  newIngredient(): FormGroup {
+    return this.fb.group({
+      ingredient: '',
+      amount: '',
+    });
+  }
+
+  addIngredient() {
+    this.ingredients1().push(this.newIngredient());
+  }
+
+  removeIngredient(ingIndex: number) {
+    this.ingredients1().removeAt(ingIndex);
+  }
+
+  onSubmit() {
+    console.log(this.ingForm.value);
+  }
 }

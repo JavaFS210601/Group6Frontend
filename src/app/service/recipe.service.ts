@@ -4,7 +4,7 @@ import { Observable, ObservableInput, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { User } from '../models/User';
 import { Step } from '../models/Step';
-import { Recipe, RecipeExt } from '../models/Recipe';
+import { Recipe, RecipeDTO, RecipeExt } from '../models/Recipe';
 
 @Injectable({
   providedIn: 'root'
@@ -76,6 +76,17 @@ export class RecipeService {
   getRecipeSteps() : Step[]{
     this.steps.push(this.step);
     return this.steps;
+  }
+
+  /*
+    Recipe data:
+      name,  description,  category, inspiration, userId ,ingrediants , steps;
+  */
+  insertRecipe( recipe : RecipeDTO) : Observable<RecipeDTO> {
+      return this.http.post<RecipeDTO>(this.ChefRecipesrl , recipe  , this.httpOptions);
+      // .pipe(
+      //   catchError(this.handleError<Recipe[]>('insertRecipe'))
+      // )
   }
 
    /*

@@ -30,7 +30,7 @@
                 <input id="category" type="text" class="col-sm-6 form-control" placeholder="What category does your recipe belong in?">
             </div>               
             <br>
-            <form [formGroup]="myForm">
+            <!-- <form [formGroup]="myForm">
                 <input formControlName="ingredient"
                        [typeahead]="ingredients"
                        [typeaheadOptionsLimit]="10"
@@ -38,7 +38,27 @@
                        placeholder="Select and add ingredients"
                        class="form-control"
                        cols="60">
+              </form> -->
+              <form [formGroup]="ingForm" (ngSubmit)="onSubmit()">
+                <div formArrayName="ingredients">
+                  <div *ngFor="let ingredient of ingredients1().controls; let ingIndex=index">
+                    <div
+                      [formGroupName]="ingIndex"
+                      style=" padding: 10px; width: 1000px; margin: 5px;"
+                    >
+                      <!-- {{ingIndex}} -->
+                      igredient:
+                      <input type="text" formControlName="ingredient" placeholder="Ingredient"/>
+                      Amount and Measurment:
+                      <input type="text" formControlName="amount" placeholder="Amount"/>
+              
+                      <button (click)="removeIngredient(ingIndex)">---Remove Ingredient</button>
+                    </div>
+                  </div>
+                  <button type="button" (click)="addIngredient()">Add Ingredient</button>
+                </div>
               </form>
+
             <br>
             <!--This is the typehead for the api method is in the recipe service and the rest is in the upload.ts-->
             <!-- <form class="iAPI" [formGroup]="myForm">
@@ -50,6 +70,10 @@
                        class="form-control"
                        cols="60">
               </form> -->
+
+              
+              <!-- {{this.empForm.value | json}} -->
+
               <br>
             <div class="row">
                 <h6 class="col-sm-3">Recipe Descripition</h6> 
