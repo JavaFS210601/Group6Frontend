@@ -30,7 +30,7 @@
                 <input id="category" type="text" class="col-sm-6 form-control" placeholder="What category does your recipe belong in?">
             </div>               
             <br>
-            <!-- <form [formGroup]="myForm">
+            <form [formGroup]="myForm">
                 <input formControlName="ingredient"
                        [typeahead]="ingredients"
                        [typeaheadOptionsLimit]="10"
@@ -38,7 +38,7 @@
                        placeholder="Select and add ingredients"
                        class="form-control"
                        cols="60">
-              </form> -->
+              </form>
               <form [formGroup]="ingForm" (ngSubmit)="onSubmit()">
                 <div formArrayName="ingredients">
                   <div *ngFor="let ingredient of ingredients1().controls; let ingIndex=index">
@@ -60,16 +60,17 @@
               </form>
 
             <br>
-            <!--This is the typehead for the api method is in the recipe service and the rest is in the upload.ts-->
-            <!-- <form class="iAPI" [formGroup]="myForm">
-                <input formControlName="ingredient"
-                       [typeahead]={{apifood}}
-                       [typeaheadOptionsLimit]="10"
-                       [typeaheadMinLength]="0"
-                       placeholder="Select and add ingredients form API"
+            <!--This is the typehead for the api method is in the recipe service and the rest is in the upload.ts and reicpe service-->
+            <form class="iAPI" [formGroup]="myFormAPI">
+                <input [formControl]="foodIngredient"
+                [typeahead]= "foodAPI"
+                (input) = "term"
+                [typeaheadOptionsLimit]="10"
+                [typeaheadMinLength]="0"
+                       placeholder="Select and add ingredients form the API"
                        class="form-control"
                        cols="60">
-              </form> -->
+              </form>
 
               
               <!-- {{this.empForm.value | json}} -->
