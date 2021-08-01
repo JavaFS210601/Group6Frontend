@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, ObservableInput, of, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, ObservableInput, of, throwError } from 'rxjs';
+import { catchError, debounceTime, map, switchMap, tap } from 'rxjs/operators';
 import { User } from '../models/User';
 import { Step } from '../models/Step';
-import { Recipe, RecipeDTO, RecipeExt } from '../models/Recipe';
+import { Recipe,  RecipeExt } from '../models/Recipe';
+import { FormControl } from '@angular/forms';
+//put this back in this above RecipeDTO
 
 @Injectable({
   providedIn: 'root'
@@ -19,22 +21,43 @@ export class RecipeService {
   
   //got this from the api website https://fdc.nal.usda.gov/api-guide.html#bkmk-8
   //foods: [description: any] | undefined;
-  foods: [description: any] | undefined;
+  
   //api here with the key I wil most likely have to interpolate the query in this api Food data from USDA
   private apiKey = 'TyfoArR5KncmZdQ7kO2KntcjEnDhAoEgU3QGczBv';
- private apiSearch = 'apple';
+
+  //this might be in correct it was private apiSearch ="apple"
+ //public apiSearch: string | undefined;
+public apiSearch = "orange";
+//searchFood = new BehaviorSubject<string>('');
+ //apiSearch = new BehaviorSubject<string>('');
+
+// foods: Observable<string[]>=this.apiSearch .pipe(
+//   debounceTime(500),
+//   switchMap(apiSearch  =>{
+//     return this.http.get<any>('https://api.nal.usda.gov/fdc/v1/foods/search?query='+this.apiSearch+'&pageSize=2&api_key='+this.apiKey);
+//   }),
+//   map((foods: [description: any]) => foods.map(foods.description))) ;
 
   constructor(private http: HttpClient) { }
 
   //Chani trying to make the api call with the method
-  getFood():Observable<any>{
+  getFood(term: string):Observable<any>{
     //unsure what to put in the wery section in the this is the example I got from the API website
-    
+    this.apiSearch = term;
     //this is the example they give me
-    //https://api.nal.usda.gov/fdc/v1/foods/search?query=apple&pageSize=2&api_key=TyfoArR5KncmZdQ7kO2KntcjEnDhAoEgU3QGczBv
-    //forgot angular is OOP so had to use this keyword thaks Golam
+    // https://api.nal.usda.gov/fdc/v1/foods/search?query=apple&pageSize=2&api_key=TyfoArR5KncmZdQ7kO2KntcjEnDhAoEgU3QGczBv
+    // forgot angular is OOP so had to use this keyword thaks Golam
     return this.http.get<any>('https://api.nal.usda.gov/fdc/v1/foods/search?query='+this.apiSearch+'&pageSize=2&api_key='+this.apiKey)
+    
+    //trying a different appoach to try to sync it to the typehead
+    
+    // return this.http.get<any>('https://api.nal.usda.gov/fdc/v1/foods/search?query='+this.apiSearch+'&pageSize=2&api_key='+this.apiKey).pipe(
+    //   map((res: any) => res),
+    //   catchError(error => throwError(error))
+    // );
+    // this.apiSearch.next(this.ingredientSearchTextInput.value);
   }
+
   getRecipeExtById(id: number): Observable<RecipeExt> {
     return this.http.get<RecipeExt>(this.ChefRecipesrl) 
     .pipe(
@@ -82,12 +105,12 @@ export class RecipeService {
     Recipe data:
       name,  description,  category, inspiration, userId ,ingrediants , steps;
   */
-  insertRecipe( recipe : RecipeDTO) : Observable<RecipeDTO> {
-      return this.http.post<RecipeDTO>(this.ChefRecipesrl , recipe  , this.httpOptions);
+  // insertRecipe( recipe : RecipeDTO) : Observable<RecipeDTO> {
+  //     return this.http.post<RecipeDTO>(this.ChefRecipesrl , recipe  , this.httpOptions);
       // .pipe(
       //   catchError(this.handleError<Recipe[]>('insertRecipe'))
       // )
-  }
+  // }
 
    /*
   Error handling method provided by offical angular tutorial
