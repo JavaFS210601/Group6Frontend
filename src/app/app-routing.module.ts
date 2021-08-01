@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './component/admin/admin.component';
-import { HeadquarterComponent } from './component/headquarter/headquarter.component';
+
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
 import { AdminGuard } from './guard/admin.guard';
@@ -19,6 +19,9 @@ import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 import { DashboardRecipeComponent } from './component/dashboard-recipe/dashboard-recipe.component';
+import { RecipesShowCaseComponent } from './component/recipes-show-case/recipes-show-case.component';
+import { RecipeDetailComponent } from './component/recipe-detail/recipe-detail.component';
+import { IsLoginGuardGuard } from './guard/is-login-guard.guard';
 
 
 
@@ -47,41 +50,51 @@ const routes: Routes = [
   {path: 'detail/:id' , component: UserDetailComponent},
   {
 
+    path:'recipes',
+    component: RecipesShowCaseComponent
+  },
+  {
+    path: 'recipe/detail/:id',
+    component: RecipeDetailComponent
+  },
+  {
     path:'home',
-    component: HomeComponent  // replace this with home component
+    component: HomeComponent  
   },
   {
     path:'upload',
-    component: UploadComponent  // replace this with recipe upload component
+    component: UploadComponent,
+    canActivate: [IsLoginGuardGuard]  
   },
   {
     path:'about',
-    component: AboutComponent  // replace this with about component
+    component: AboutComponent  
   },
   {
     path:'recipecard',
-    component: RecipecardComponent  // replace this with about component
+    component: RecipecardComponent  
   },
   {
     path:'faq',
-    component: FaqComponent  // replace this with frequently asked questions component
+    component: FaqComponent  
   },
   {
     path:'login',
-    component: LoginComponent  // replace this with frequently login component
+    component: LoginComponent,
   },
   {
     path:'sign-up',
-    component: SignUpComponent  // replace this with sign up component
+    component: SignUpComponent,
+    canActivate: [IsLoginGuardGuard]  
   },
   {
   path:'reset-password',
-  component: ResetPasswordComponent  // replace this with reset password component
+  component: ResetPasswordComponent  
   },
   {
 
     path:"**",
-    component: PageNotFoundComponent  // replace this with other component
+    component: PageNotFoundComponent  
 
   }
   

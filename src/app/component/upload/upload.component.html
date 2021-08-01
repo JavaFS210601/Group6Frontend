@@ -1,90 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Recipe Upload</title>
-   <link rel = "stylesheet" href = "./../upload/upload.component.css">
+  <meta charset="UTF-8">
+  <title>Recipe Upload</title>
+  <link rel="stylesheet" href="./../upload/upload.component.css">
 </head>
+
 <body>
 
-    <div class="container" id="fullcontainer">
-        <div class="col-sm-18">
-            <br>
-            <br>
-            <h1 id = "pageheader">Upload your recipe!</h1>
-        </div>     
-
-        <br>
-
-
-        <br>
-
-        <div id = "recipeSubmission">
-            <div class="row">
-                <h6 class="col-sm-3">Recipe Name</h6> 
-                <input id="cname" type="text" class="col-sm-6 form-control" placeholder="Enter your recipe's name">
-            </div>   
-            <br>
-            <div class="row">
-                <h6 class="col-sm-3">Recipe Category</h6> 
-                <input id="category" type="text" class="col-sm-6 form-control" placeholder="What category does your recipe belong in?">
-            </div>               
-            <br>
-            <form [formGroup]="myForm">
-                <input formControlName="ingredient"
-                       [typeahead]="ingredients"
-                       [typeaheadOptionsLimit]="10"
-                       [typeaheadMinLength]="0"
-                       placeholder="Select and add ingredients"
-                       class="form-control"
-                       cols="60">
-              </form>
-              <br>
-              <br>
-              <form [formGroup]="ingForm" (ngSubmit)="onSubmit()">
-                <div formArrayName="ingredients">
-                  <div *ngFor="let ingredient of ingredients1().controls; let ingIndex=index">
-                    <div
-                      [formGroupName]="ingIndex"
-                      style=" padding: 10px; width: 1000px; margin: 5px;"
-                    >
-                      {{ingIndex}}
-                      <br>
-                      igredient:
-                      <input type="text" formControlName="ingredient" placeholder="Ingredient"/>
-                      Amount and Measurment:
-                      <input type="text" formControlName="amount" placeholder="Amount"/>
-              
-                      <button (click)="removeIngredient(ingIndex)">---Remove Ingredient</button>
-                    </div>
-                  </div>
-                  <button type="button" (click)="addIngredient()">Add Ingredient</button>
-                </div>
-              </form>
-              
-              <!-- {{this.empForm.value | json}} -->
-              
-              <br /><br />
-              <br>
-              <br>
-            <div class="row">
-                <h6 class="col-sm-3">Recipe Descripition</h6> 
-                <textarea id="description" class="form-control" placeholder="Description" rows="3" cols="60"></textarea>
-            </div>
-
-            <br>
-            <div class="row">
-                <h6 class="col-sm-3">Inspiration for Recipe</h6> 
-                <textarea id="inspiration" class="form-control" placeholder="Inspiration" rows="3" cols="60"></textarea>
-            </div>
-
-            <br>
-
-            <br>
-            <button id = "submitRecipe" type="button">Submit Recipe</button>
-        </div>
+  <div class="container" id="fullcontainer">
+    <div class="col-sm-18">
+      <br>
+      <br>
+      <h1 id="pageheader">Upload your recipe!</h1>
     </div>
 
+    <br>
+
+
+    <br>
+
+    <div id="recipeSubmission">
+      <form [formGroup]="nameForm">
+      <div class="row">
+        <h6 class="col-sm-3">Recipe Name</h6>
+        <input formControlName="recipeName" id="cname" type="text" class="col-sm-6 form-control" placeholder="Enter your recipe's name">
+      </div>
+
+    </form>
+      <br>
+      <form [formGroup]="categoryForm">
+        <div class="row">
+          
+          <h6 class="col-sm-3">Recipe Category</h6>
+          <div class="col-sm-3">
+          <input formControlName="categorys" [typeaheadIsFirstItemActive]="true" [typeahead]="categorys" [typeaheadOptionsLimit]="6"
+            [typeaheadMinLength]="0" placeholder="What category does your recipe belong in?" class="form-control" cols="10">
+          <!-- <input id="category" type="text" class="col-sm-6 form-control"
+            placeholder="What category does your recipe belong in?"> -->
+          </div>
+          </div>
+        </form>
+      <br>
+      <form [formGroup]="myForm">
+        <input formControlName="ingredient"  [typeahead]="ingredients" [typeaheadOptionsLimit]="10"
+          [typeaheadMinLength]="0" placeholder="Select and add ingredients" class="form-control" cols="60">
+      </form>
+      <br>
+      <br>
+      <form [formGroup]="ingForm" >
+        <div formArrayName="ingredients">
+          <div *ngFor="let ingredient of ingredients1().controls; let ingIndex=index">
+            <div [formGroupName]="ingIndex" style=" padding: 10px; width: 1000px; margin: 5px;">
+              {{ingIndex}}
+              <br>
+              igredient:
+              <input type="text" formControlName="ingredient" placeholder="Ingredient" />
+              Amount and Measurment:
+              <input type="text" formControlName="amount" placeholder="Amount" />
+
+              <button (click)="removeIngredient(ingIndex)">---Remove Ingredient</button>
+            </div>
+          </div>
+          <button type="button" (click)="addIngredient()">Add Ingredient</button>
+
+
+        </div>
+      </form>
+
+      <!-- {{this.empForm.value | json}} -->
+      <form [formGroup]="otherForm" (ngSubmit)="onSubmit()">
+        <br /><br />
+        <br>
+        <br>
+        <div class="row">
+          <h6 class="col-sm-3">Recipe Descripition</h6>
+          <textarea formControlName="description" id="description" class="form-control" placeholder="Description"
+            rows="3" cols="60"></textarea>
+        </div>
+
+        <br>
+        <div class="row">
+          <h6 class="col-sm-3">Inspiration for Recipe</h6>
+          <textarea formControlName="inspiration" id="inspiration" class="form-control" placeholder="Inspiration"
+            rows="3" cols="60"></textarea>
+        </div>
+
+        <br>
+
+        <br>
+
+
+        <button id="submitRecipe" type="submit">Submit Recipe</button>
+      </form>
+    </div>
+  </div>
+
 </body>
-</html>        
-        
+
+</html>

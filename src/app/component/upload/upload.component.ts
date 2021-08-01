@@ -22,7 +22,16 @@ export class UploadComponent implements OnInit {
     ingrediants:" coco-1b, gogo-2b, pojo-1b, jopo-10b",
     steps: "step1_stpe2_step2_step4"
   }
-
+  
+  CategoryCtrl= new FormControl();
+  categoryForm = new FormGroup({
+    categorys: this.CategoryCtrl
+  });
+  categorys = [
+    'food',
+    'coconut',
+    'water'
+  ]
 
   ingredientCtrl = new FormControl();
   myForm = new FormGroup({
@@ -90,23 +99,39 @@ export class UploadComponent implements OnInit {
     'Ground turkey'
   ]
 
+  nameForm : FormGroup;
 
-
-     
+  otherForm : FormGroup;
 
   ingForm: FormGroup;
 
   constructor(private fb: FormBuilder, private recipeService : RecipeService) {
+    this.nameForm = this.fb.group({
+      recipeName: ""
+    })
+
     this.ingForm = this.fb.group({
       ingredients: this.fb.array([])
-    });}
+    });
+
+    this.otherForm = this.fb.group({
+      description : "",
+      inspiration : ""
+    })
+  }
 
   ngOnInit() {
-    this.recipeService.insertRecipe(this.recipeDTO).subscribe(
-      data => console.log("this is recipe dto data" +data)
-    )
+    // this.recipeService.insertRecipe(this.recipeDTO).subscribe(
+    //   data => console.log("this is recipe dto data" +data)
+    // )
+
     this.ingForm = this.fb.group({
-      ingredients: this.fb.array([])
+      ingredients: this.fb.array([ ])
+    });
+
+    this.otherForm = this.fb.group({
+      description: "write your recipe description here!",
+      inspiration : "What inspire you do this?"
     });
   }
 
@@ -129,7 +154,43 @@ export class UploadComponent implements OnInit {
     this.ingredients1().removeAt(ingIndex);
   }
 
+ 
+
+  recipeDTO2: RecipeDTO | undefined
   onSubmit() {
-    console.log(this.ingForm.value);
+   try {
+      console.log(this.ingForm.value);
+      console.log(this.myForm.value);
+      console.log(this.otherForm.value);
+      let name = this.nameForm.value.recipeName;
+      let description = this.otherForm.value.description;
+      let inspiration = this.otherForm.value.inspiration;
+      let category = this.categoryForm.value.categorys;
+      let ingrediantsString = this.ingForm.value.ingredients[0]['ingredient'] + "-"
+        + this.ingForm.value.ingredients[0]['amount'] + ", ";
+       // + this.myForm.value.ingredient + "-1b";
+
+      this.recipeDTO2 = {
+        recipe_id: null,
+        name: name ,
+        description: description,
+        category: category,
+        inspiration: inspiration,
+        userId: 1,
+        ingrediants: ingrediantsString,
+        steps: "step1_stpe2_step2_step4"
+
+      }
+      console.log(this.recipeDTO2);
+
+      // #uncomment to send creating new Recipe below 
+      // this.recipeService.insertRecipe(this.recipeDTO2).subscribe(
+      //   data => console.log("this is recipe dto data" +data)
+      // )
+      
+     } catch(err) {
+        alert("please fill in all values")
+      }
+   
   }
 }

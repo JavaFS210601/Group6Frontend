@@ -43,10 +43,13 @@ export class LoginComponent implements OnInit {
    //this.user = this.userService.login(f.value.username, f.value.password)
    this.user = this.http.post<any>("http://localhost:8088/boot/users"+ "/authenticate",formData)
    .subscribe(
-    (res) => localStorage.setItem("username",  f.value.username),
-    (err) => console.log(err)
-  );
-  
+    data => {
+      localStorage.setItem("username",  data.username );
+      localStorage.setItem("id",  data.userId)
+      localStorage.setItem("role",  data.role_id.role)
+    }
+    );
+   
     //.subscribe(loginObserver);
     if( this.user) {
      

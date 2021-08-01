@@ -37,19 +37,26 @@ export class AuthService {
   }
 
 
-  isAuthenticated() {
+  isAuthenticated() : number {
     //if localstorage has the user information , return user is login.
-    if (localStorage.getItem("username")) {
+    if (localStorage.getItem("username") !== "") {
       console.log(localStorage.getItem("username") + " is logged in");
-      return true;
+
+       if (localStorage.getItem("role") === "manager"){
+          return 1;
+      } else {
+          return 3;
+      }
+
+     
     } else {
-      this.router.navigate(['login']);
+    //  this.router.navigate(['login']);
     }
 
     // make a backend call to find the user by username and pwd
 
 
-    return true;
+    return 0;
   }
 
   // Deprecated 

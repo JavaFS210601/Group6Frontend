@@ -12,7 +12,10 @@
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/recipes">Recipe
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Pricing</a>
         </li>
@@ -26,10 +29,14 @@
           <a class="nav-link" routerLink="/faq">Q & A</a> 
           <!-- Frequently Asked Questions -->
         </li>
+        <div *ngIf="!user_id">
+          <li><button  class= "loginButton" type="button" class="btn btn-sucess" routerLink="/login">Login or SignUp</button>
+          </li>
+        </div>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Pro</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="user_id">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dashboard</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="/dashboard">main panel</a>
@@ -39,17 +46,21 @@
             <a class="dropdown-item" href="/upload">New recipe</a>
           </div>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="user_id">
           <a class="nav-link"  routerLink="/admin">Admin</a>
         </li>
-        <li><button  class= "loginButton" type="button" class="btn btn-sucess" routerLink="/login">Login or SignUp</button>
-        </li>
+        
+       
+          <li *ngIf="user_id"><button  class= "" type="button" class="btn btn-sucess" (click)="logOut()" >Login out </button>
+          </li>
+      
       </ul>
-      <form class="d-flex">
+      <!-- <form class="d-flex">
         <input class="form-control me-sm-2" type="text" placeholder="Search">
-        <!-- <input #searchBox id="search-box" (input)="search(searchBox.value)" /> -->
+        <input #searchBox id="search-box" (input)="search(searchBox.value)" />
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      </form> -->
+      <app-search></app-search>
     </div>
   </div>
 </nav>

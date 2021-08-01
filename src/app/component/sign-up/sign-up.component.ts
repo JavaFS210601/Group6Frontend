@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { Role } from 'src/app/models/Role';
@@ -19,7 +20,7 @@ export class SignUpComponent implements OnInit {
   users: User[] = [];
 
    //tried to inject the serivce
-  constructor(private authservice : AuthService, public http : HttpClient) { }
+  constructor(private authservice : AuthService, public http : HttpClient ,private router: Router) { }
      
   // all new user is client
     role: Role = {
@@ -60,6 +61,8 @@ const registerObserver = {
       this.authservice.register(this.user)
       .subscribe(newUser => {
         this.users.push(newUser);
+        alert(" Welcome" + newUser.first_name);
+        this.router.navigate(['home']);
       });
   
   

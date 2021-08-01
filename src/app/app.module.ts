@@ -15,7 +15,6 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { FaqComponent } from './component/faq/faq.component';
 
 import { NavComponent } from './component/nav/nav.component';
-import { HeroDetailComponent } from './component/hero-detail/hero-detail.component';
 import { LoginComponent } from './component/login/login.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { UserDetailComponent } from './component/user-detail/user-detail.component';
@@ -34,6 +33,9 @@ import { ResetPasswordComponent } from './component/reset-password/reset-passwor
 
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RecipesShowCaseComponent } from './component/recipes-show-case/recipes-show-case.component';
+import { RecipeDetailComponent } from './component/recipe-detail/recipe-detail.component';
+import { SearchComponent } from './component/search/search.component';
 
 
 
@@ -48,7 +50,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     FaqComponent,
     NavComponent,
-    HeroDetailComponent,
     LoginComponent,
 
     PageNotFoundComponent,
@@ -61,7 +62,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardLeftbarComponent,
     SignUpComponent,
     DeleteUserButtonComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    RecipesShowCaseComponent,
+    RecipeDetailComponent,
+    SearchComponent
 
 
     //declare other components here 
