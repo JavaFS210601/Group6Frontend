@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, ObservableInput, of, throwError } from 'rx
 import { catchError, debounceTime, map, switchMap, tap } from 'rxjs/operators';
 import { User } from '../models/User';
 import { Step } from '../models/Step';
-import { Recipe,  RecipeExt } from '../models/Recipe';
+import { Recipe,  RecipeDTO,  RecipeExt } from '../models/Recipe';
 import { FormControl } from '@angular/forms';
 //put this back in this above RecipeDTO
 
@@ -40,6 +40,7 @@ public apiSearch = "orange";
 
   constructor(private http: HttpClient) { }
 
+  
   //Chani trying to make the api call with the method
   getFood(term: string):Observable<any>{
     //unsure what to put in the wery section in the this is the example I got from the API website
@@ -47,7 +48,7 @@ public apiSearch = "orange";
     //this is the example they give me
     // https://api.nal.usda.gov/fdc/v1/foods/search?query=apple&pageSize=2&api_key=TyfoArR5KncmZdQ7kO2KntcjEnDhAoEgU3QGczBv
     // forgot angular is OOP so had to use this keyword thaks Golam
-    return this.http.get<any>('https://api.nal.usda.gov/fdc/v1/foods/search?query='+this.apiSearch+'&pageSize=2&api_key='+this.apiKey)
+    return this.http.get<any>('https://api.nal.usda.gov/fdc/v1/foods/search?query='+this.apiSearch+'&pageSize=10&api_key='+this.apiKey)
     
     //trying a different appoach to try to sync it to the typehead
     
@@ -58,11 +59,19 @@ public apiSearch = "orange";
     // this.apiSearch.next(this.ingredientSearchTextInput.value);
   }
 
-  getRecipeExtById(id: number): Observable<RecipeExt> {
-    return this.http.get<RecipeExt>(this.ChefRecipesrl) 
+  getRecipeExtById(id: number): Observable<RecipeExt > {
+    return this.http.get<RecipeExt>(this.ChefRecipesrl+"/recipe/" + id) 
     .pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
+      tap(_ => this.log(`fetched recipe id=${id}`)),
       catchError(this.handleError<RecipeExt>(`getRecipeExt id=${id}`)) 
+    );
+  }
+
+  getRecipeExtByUserId(id: number): Observable<RecipeExt []> {
+    return this.http.get<RecipeExt []>(this.ChefRecipesrl+"/" + id) 
+    .pipe(
+      tap(_ => this.log(`fetched recipe id=${id}`)),
+      catchError(this.handleError<RecipeExt []>(`getRecipeExt id=${id}`)) 
     );
   }
 
@@ -105,12 +114,33 @@ public apiSearch = "orange";
     Recipe data:
       name,  description,  category, inspiration, userId ,ingrediants , steps;
   */
-  // insertRecipe( recipe : RecipeDTO) : Observable<RecipeDTO> {
-  //     return this.http.post<RecipeDTO>(this.ChefRecipesrl , recipe  , this.httpOptions);
+  insertRecipe( recipe : RecipeDTO) : Observable<RecipeDTO> {
+      return this.http.post<RecipeDTO>(this.ChefRecipesrl , recipe  , this.httpOptions);
       // .pipe(
       //   catchError(this.handleError<Recipe[]>('insertRecipe'))
       // )
-  // }
+  }
+
+  /* GET heroes whose name contains search term */
+  searchRecipes(term: string): Observable<RecipeExt[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+
+    // return this.http.get<RecipeExt[]>(this.ChefRecipesrl)
+    // .pipe(
+    //   catchError(this.handleError<RecipeExt[]>('getRecipesExt', []))
+    // );
+
+    return this.http.get<RecipeExt[]>(`${this.ChefRecipesrl}/search?name=${term}`).pipe(
+      tap(x => x.length ?
+         this.log(`found recipes matching "${term}"`) :
+         this.log(`no recipes matching "${term}"`)),
+      catchError(this.handleError<RecipeExt[]>('searchHeroes', []))
+    );
+  }
+
 
    /*
   Error handling method provided by offical angular tutorial

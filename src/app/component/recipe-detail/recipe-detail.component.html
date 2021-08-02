@@ -1,0 +1,47 @@
+
+<div *ngIf="recipeExt ">
+
+<div class="container"> 
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="./../../../assets/cuttingboard.jfif" class="" alt="..."  height="300"/>
+        </div>
+
+        <div class="col-sm-6">
+            <div>{{ recipeExt.name  }}</div>
+            <div>description: {{ recipeExt.description }}</div>
+            <div>category: {{ recipeExt.category}}</div>
+            <div>inspiration :{{ recipeExt.inspiration }}</div>
+        
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h5> Ingrediants </h5>
+            <div  *ngFor="let ingrediant of recipeExt.ingrediants ">
+
+                    <ul >
+                        <li> amount:{{ ingrediant.ammount}} |  ingredient :{{ingrediant.ingrediant}}</li>
+                        <!-- <li>ingredient :{{ ingrediant.ingrediant }}: {{ ingrediant.ammount }}</li> -->
+                    </ul>
+            </div>
+        </div>
+    
+        <div class="col-sm-6">
+            <h5> Steps </h5>
+            <div  *ngFor="let step of recipeExt.steps ">
+                <ul >
+                    
+                    <li>{{ step.step }}</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div *ngIf="!recipeExt ">
+
+    No Extra details
+</div>

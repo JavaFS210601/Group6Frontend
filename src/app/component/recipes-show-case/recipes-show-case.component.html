@@ -1,0 +1,43 @@
+<div class="container">
+  <div  class="row " > 
+<div class="d-flex  justify-content-center" >
+  <div class="card" style="width: 100%; margin: 3em 2em;background-color: antiquewhite; ">
+    <div class="card-body">
+        <img src="./../../../assets/coconut.jpeg" class="" alt="..." width="50%" height="300">
+      <h5 class="card-title"> coconut cookie</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Category: sweet heaven </h6>
+      <p class="card-text">Descriptiont: Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <!-- <a href="recipe/detail" class="card-link">STEPS</a>
+      <a href="/login" class="card-link">Sign up for more</a> -->
+    </div>
+  </div>
+</div>
+
+
+<div  class="row d-flex  justify-content-left" > 
+  <div clas="row" *ngFor="let recipe of recipeExtRef | async">
+    <div class="card" style="width: 100%; margin: 3em 2em; background-color: antiquewhite; ">
+        <div class="card-body" >
+            <img src="./../../../assets/640x360.png" class="" alt="" width="600" height="300">
+            <h3>id: {{recipe.recipe_id}}</h3>
+            <h5 class="card-title">{{ recipe.name  }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{recipe.category}}</h6>
+          <p class="card-text" >{{recipe.description }} </p>
+          <p class="card-text">{{ recipe.inspiration }}</p>
+
+          <div class="row">
+            <div class="col-sm-1">
+            <a href="/recipe/detail/{{recipe.recipe_id}}" class="btn btn-primary" >STEPS</a>
+          </div>
+            <!-- <app-recipe-detail [recipeExtRef]="recipe"></app-recipe-detail> -->
+            <div class="col-sm-4">
+            <a type="button" href="/login" class="btn btn-primary">Sign up for more</a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+</div>
+</div>

@@ -19,7 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       TypeaheadModule.forRoot(),
       ReactiveFormsModule,
       BrowserModule,
-      FormsModule,],
+      FormsModule,
+    ],
+      
     exports: [AccordionModule, BsDropdownModule, ModalModule, TabsModule, CarouselModule],
     declarations: [],
     providers: []
