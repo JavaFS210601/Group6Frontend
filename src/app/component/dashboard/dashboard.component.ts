@@ -12,12 +12,17 @@ import { UserService } from 'src/app/service/user.service';
 export class DashboardComponent implements OnInit {
 
   user: User | undefined;
-  userRef: Observable<User[]>;
+ // userRef: Observable<User[]>;
   constructor(private userService: UserService , private recipeService: RecipeService) {
-    this.userRef = this.userService.getUsers();
-    this.userService.getUser(1).subscribe (
-      data => this.user = data
-    )
+   // this.userRef = this.userService.getUsers();
+   if (localStorage.getItem("id") !== null && localStorage.getItem("id") !== "" ){
+    let id_string: any = localStorage.getItem("id")
+    const id: number | null = parseInt(id_string);
+     this.userService.getUser(id).subscribe (
+       data => this.user = data
+     )
+   }
+   
   }
 
   ngOnInit(): void {

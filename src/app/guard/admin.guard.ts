@@ -19,12 +19,19 @@ export class AdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
      
-      if (!this.auth.isAuthenticated()) {
+      if (this.auth.isAuthenticated() === 1) {
         
-        this.router.navigate(['home']);
-        return false;
-      }
-      return true;
+        //this.router.navigate(['admin']);
+        return true;
+      } 
+      else if( this.auth.isAuthenticated() === 3 ){
+        //this.router.navigate(['dashboard']);
+        return true;
+      } else {
+        this.router.navigate(['/login']);
+      //   return false;
+       }
+      return false;
   }
   
 }

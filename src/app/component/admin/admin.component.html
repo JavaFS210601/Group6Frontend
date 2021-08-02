@@ -2,23 +2,28 @@
   <div *ngIf="userRef">
     <h3> User Dashboard</h3>
     <!-- <a routerLink="/detail/1">Test link for detail page</a> -->
+    <div class="row">
+    
+      <div class="col-sm-2"  style="color: black;"> id: </div>
+    <div class="col-sm-2"> username:</div>
+    <div class="col-sm-2"> firstname: </div>
+     <div class="col-sm-2"> lastname:</div>
+
+    </div>
 
     <div *ngFor=" let user of userRef | async ">
-
-      <a routerLink="/detail/{{user.userId}}">
-        <span class="badge" style="color: black;">{{user.userId }}</span>
-      </a> <span> username:{{ user.username }}</span>
-      <span> firstname:{{ user.first_name }} </span> <span> lastname:{{ user.last_name}}</span>
-      <app-delete-user-button [user]="user"></app-delete-user-button>
+      <div class="row">
+    
+        <div class="col-sm-2" style="color: black;">  <a routerLink="/detail/{{user.userId}}">{{user.userId }}</a></div>
+     
+       <div class="col-sm-2"> {{ user.username }}</div>
+      <div class="col-sm-2"> {{ user.first_name }} </div>
+       <div class="col-sm-2">{{ user.last_name}}</div>
+      <!-- <app-delete-user-button [user]="user"></app-delete-user-button> -->
+    </div>
     </div>
 
   </div>
 
-  <div>
-    <div *ngFor=" let step of steps  ">
-        <div>{{ step.step}}</div>
-
-    </div>
-
-  </div>
+ 
 </div>

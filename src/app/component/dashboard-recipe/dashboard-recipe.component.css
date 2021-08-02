@@ -48,11 +48,16 @@ table  tr td {
 }
 
 .user-icon {
+                
+    background-image: url(./../../../assets/user_icon.png) ;
+    background-size: cover;
     margin: 1em 1em 1em 1em;
-    height: 10em;
+   
     /* background-color: antiquewhite; */
     border-width: 0.1em;
-    border-style: dashed;
+    /* border-style: dashed; */
+   width: 200px;
+   height: 200px;
 }
 .user-name{
 

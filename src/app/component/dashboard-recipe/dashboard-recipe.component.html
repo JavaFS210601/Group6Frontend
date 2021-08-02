@@ -7,7 +7,7 @@
 
         <div>
             <h2>List of Recipes</h2>
-            <div> # Recipe <span> : 4</span></div> 
+            <div> # Recipe <span> : {{numOfRecipe}}</span></div>
 
 
             <table>
@@ -21,47 +21,76 @@
                     <td>ingrediants:</td>
                     <td>steps:</td>
                 </tr>
-     
+
                 <tr *ngFor="let recipe of recipeExtRef | async">
                     <td></td>
-                    <td>{{ recipe.name  }}</td>
+                    <td>{{ recipe.name }}</td>
                     <td>{{recipe.description }}</td>
                     <td>{{recipe.category}}</td>
                     <td>{{ recipe.inspiration }}</td>
                     <!-- <td>{{ recipe.ingrediants}}</td> -->
-                    <td> 
-                        <div  *ngFor="let ingrediant of recipe.ingrediants ">
-                            <ul >
+                    <td>
+                        <div *ngFor="let ingrediant of recipe.ingrediants ">
+                            <ul>
                                 <li>{{ ingrediant.ammount}} {{ingrediant.ingrediant}}</li>
                                 <!-- <li>{{ ingrediant.ingrediant }}: {{ ingrediant.ammount }}</li> -->
                             </ul>
-                    
+
                         </div>
                     </td>
-                    <td> 
-                        <div  *ngFor="let step of recipe.steps ">
-                            <ul >
-                                
+                    <td>
+                        <div *ngFor="let step of recipe.steps ">
+                            <ul>
+
                                 <li>{{ step.step }}</li>
                             </ul>
-                    
+
                         </div>
                     </td>
-                </tr>          
+                </tr>
             </table>
         </div>
 
-       
+
     </div>
 
     <div class="col-3 right-sidebar">
-            <div class="user-icon">user icon</div>
-            <div class="user-name">user name</div>
-            <div class="user-description">description</div>
+        <div *ngIf="user">
+            <div class="row user-icon">
+                <!-- <img  src="./../../../assets/user_icon.jpg" height="100" class="img-responsive" alt="user-icon"/> -->
+            </div>
+           
+            <div class="row userinfo">
+                <div class="row m-2">
+                    <h3>{{user.username | uppercase}} - Details </h3>
+                    <h4>id {{ user.userId }}</h4>
+                    </div>
 
-            <div class="col-sm-4">
-                <app-delete-user-button [user]="user"></app-delete-user-button> </div>
-              
+                <div class="row m-2">
+                    <div class="col-sm-6">
+                        <h5>Full Name:</h5> {{user.first_name}} {{user.last_name}}
+                    </div>
+                </div>
+
+                <div class="row m-2">
+                    <div class="col-sm-4">
+                        <h5>Role:</h5> {{ user.role_id.role }}
+                    </div>
+                    <!-- <div class="col-sm-4"> recipe id:{{ user.recipe_id }}</div> -->
+                </div>
+                <div class="row m-2">
+
+                    <!-- <div class="col-sm-4 " >
+                        <app-delete-user-button [user]="user"></app-delete-user-button>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+
+
+
+
     </div>
 
 
