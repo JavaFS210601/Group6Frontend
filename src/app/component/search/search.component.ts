@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { RecipeExt } from 'src/app/models/Recipe';
@@ -11,7 +12,7 @@ import { RecipeService } from 'src/app/service/recipe.service';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService, public  router : Router) { }
 
   recipes$!: Observable<RecipeExt[]>;
   private searchTerms = new Subject<string>();

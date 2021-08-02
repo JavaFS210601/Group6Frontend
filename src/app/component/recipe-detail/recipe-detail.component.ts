@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Ingrediant } from 'src/app/models/Ingrediant';
 ;
@@ -23,13 +23,18 @@ export class RecipeDetailComponent implements OnInit {
   
   constructor(private recipeService: RecipeService , private route: ActivatedRoute) { 
     
-    this.recipeId = this.route.snapshot.paramMap.get('id');
+   this.recipeId = this.route.snapshot.paramMap.get('id');
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
    this.recipeExtRef = this.recipeService.getRecipeExtById(id);
     this.ingrediantParser();
   }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.recipeId  = params.get('id');
+   
+      //business logic what changes you want on the page with this new data.
+      });
   }
 
   ingrediantParser(){

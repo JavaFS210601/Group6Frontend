@@ -62,6 +62,7 @@ const registerObserver = {
       .subscribe(newUser => {
         this.users.push(newUser);
         alert(" Welcome" + newUser.first_name);
+        
         this.router.navigate(['home']);
       });
   

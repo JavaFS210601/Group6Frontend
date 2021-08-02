@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
   constructor(public router: Router) { this.user_id = localStorage.getItem("id"); }
 
   ngOnInit(): void {
+    //this.user_id = localStorage.getItem("id");
   }
 
   logOut() {

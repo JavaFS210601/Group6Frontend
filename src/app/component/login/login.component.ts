@@ -53,7 +53,8 @@ export class LoginComponent implements OnInit {
     //.subscribe(loginObserver);
     if( this.user) {
      
-      this.router.navigate(['home']);
+     this.router.navigate(['dashboard']); 
+        
     }
 
     console.log(f.value);  // { first: '', last: '' }

@@ -27,56 +27,83 @@
         <h6 class="col-sm-3">Recipe Name</h6>
         <input formControlName="recipeName" id="cname" type="text" class="col-sm-6 form-control" placeholder="Enter your recipe's name">
       </div>
+      
 
     </form>
-      <br>
-      <form [formGroup]="categoryForm">
-        <div class="row">
-          
-          <h6 class="col-sm-3">Recipe Category</h6>
-          <div class="col-sm-3">
-          <input formControlName="categorys" [typeaheadIsFirstItemActive]="true" [typeahead]="categorys" [typeaheadOptionsLimit]="6"
-            [typeaheadMinLength]="0" placeholder="What category does your recipe belong in?" class="form-control" cols="10">
-          <!-- <input id="category" type="text" class="col-sm-6 form-control"
-            placeholder="What category does your recipe belong in?"> -->
-          </div>
-          </div>
-        </form>
-      <br>
-      <form [formGroup]="myForm">
-        <input formControlName="ingredient"  [typeahead]="ingredients" [typeaheadOptionsLimit]="10"
+    <form [formGroup]="categoryForm">
+        
+      <div class="row">
+        <h6 class="col-sm-3">Recipe Category</h6> 
+        <input id="category" formControlName="categorys"  [typeahead]="categorys" [typeaheadOptionsLimit]="10"
+        [typeaheadMinLength]="0" type="text" class="col-sm-6 form-control" placeholder=" category ">
+    </div>    
+
+    </form>
+
+
+      <!-- <form [formGroup]="myForm">
+        <input formControlName="ingreedient"  [typahead]="ingredients" [typeaheadOptionsLimit]="10"
           [typeaheadMinLength]="0" placeholder="Select and add ingredients" class="form-control" cols="60">
       </form>
       <br>
-      <br>
+      <br> -->
+
+
       <form [formGroup]="ingForm" >
         <div formArrayName="ingredients">
           <div *ngFor="let ingredient of ingredients1().controls; let ingIndex=index">
             <div [formGroupName]="ingIndex" style=" padding: 10px; width: 1000px; margin: 5px;">
-              {{ingIndex}}
+               <h5> Ingredient #{{ingIndex + 1}}</h5>
               <br>
-              igredient:
-              <input type="text" formControlName="ingredient" placeholder="Ingredient" />
+               Enter your name of your ingredient to search 
+              <input type="text" formControlName="ingredient" (input) = "callAPI(ingIndex)"  placeholder="Ingredient" />
+             
+             <!-- Chani: This is the typehead for the api method is in the recipe service and the rest is in the upload.ts and reicpe service-->
+              <input 
+                      formControlName="ingredientSelect" 
+                      [typeahead]= "foodAPI"
+                      
+                      [typeaheadOptionsLimit]="10"
+                      [typeaheadMinLength]="0"
+                            placeholder="Select and add ingredients form the API"
+                            class="form-control"
+                            cols="60">
+              <!-- {{this.empForm.value | json}} -->
               Amount and Measurment:
-              <input type="text" formControlName="amount" placeholder="Amount" />
-
-              <button (click)="removeIngredient(ingIndex)">---Remove Ingredient</button>
+              <input type="text" formControlName="amount" placeholder="Amount" value="1b"/>
+              <br>
+              <button (click)="removeIngredient(ingIndex)" class="btn btn-secondary"> Remove </button>
             </div>
+            <br>
           </div>
-          <button type="button" (click)="addIngredient()">Add Ingredient</button>
+          <button type="button" (click)="addIngredient()" class="btn btn-primary">Add Ingredient</button>
 
 
         </div>
       </form>
+      <br>
+      <form [formGroup]="stepForm" >
+        <div formArrayName="steps">
+          <div *ngFor="let step of stepInit().controls; let stepIndex=index">
+            <div [formGroupName]="stepIndex" style=" padding: 10px; width: 1000px; margin: 5px;">
+               <h5> Step #{{stepIndex + 1}}</h5>
+               <input type="text"  formControlName="step"   placeholder="step" />
+              
+               <button (click)="removeStep(stepIndex)" class="btn btn-secondary"> Remove </button>
+          </div>
+        </div>
+        <button type="button" (click)="addStep()" class="btn btn-primary">Add Step</button>
 
-      <!-- {{this.empForm.value | json}} -->
+        </div>
+      </form>
+
       <form [formGroup]="otherForm" (ngSubmit)="onSubmit()">
         <br /><br />
         <br>
         <br>
         <div class="row">
           <h6 class="col-sm-3">Recipe Descripition</h6>
-          <textarea formControlName="description" id="description" class="form-control" placeholder="Description"
+          <textarea formControlName="description" id="description" type="text" class="form-control" placeholder="Description"
             rows="3" cols="60"></textarea>
         </div>
 
@@ -92,7 +119,7 @@
         <br>
 
 
-        <button id="submitRecipe" type="submit">Submit Recipe</button>
+        <button id="submitRecipe" type="submit" class="btn btn-primary">Submit Recipe</button>
       </form>
     </div>
   </div>

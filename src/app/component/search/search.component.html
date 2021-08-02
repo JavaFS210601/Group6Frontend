@@ -26,9 +26,10 @@
       
         </div>
           <li role="presentation"*ngFor="let recipe of recipes$ | async">
-            <a routerLink="/recipe/detail/{{recipe.recipe_id}}">
+            <a href="/recipe/detail/{{recipe.recipe_id}}">
               {{recipe.name}}
             </a>
+
           </li>
         </ul>
       </div>
