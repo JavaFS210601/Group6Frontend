@@ -41,12 +41,19 @@ export class LoginComponent implements OnInit {
     formData.append("username" , f.value.username);
     formData.append("password", f.value.password);
    //this.user = this.userService.login(f.value.username, f.value.password)
+
+   
    this.user = this.http.post<any>("http://localhost:8088/boot/users"+ "/authenticate",formData)
    .subscribe(
     data => {
       localStorage.setItem("username",  data.username );
       localStorage.setItem("id",  data.userId)
       localStorage.setItem("role",  data.role_id.role)
+      if( data) {
+     
+        this.router.navigate(['dashboard']); 
+        this.authservice.login()
+       }
     }
     );
    

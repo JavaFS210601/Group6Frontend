@@ -17,7 +17,8 @@ export class IsLoginGuardGuard implements CanActivate {
         //this.router.navigate(['/dashboard']);
         return true;
       } else if (localStorage.getItem("role") === "manager"){
-        this.router.navigate(['/admin']);
+       // this.router.navigate(['/admin']);
+        return true;
       }
       return false;
   }
