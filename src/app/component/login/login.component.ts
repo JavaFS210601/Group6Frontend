@@ -51,18 +51,12 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("role",  data.role_id.role)
       if( data) {
      
-        this.router.navigate(['dashboard']); 
+        this.router.navigate(['home']); 
         this.authservice.login()
        }
     }
     );
-   
-    //.subscribe(loginObserver);
-    if( this.user) {
-     
-     this.router.navigate(['dashboard']); 
-        
-    }
+
 
     console.log(f.value);  // { first: '', last: '' }
     console.log(f.valid);  // false
