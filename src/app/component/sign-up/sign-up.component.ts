@@ -24,17 +24,17 @@ export class SignUpComponent implements OnInit {
      
   // all new user is client
     role: Role = {
-    role_id: 1,
-    role: "employye"
+    role_id: 3,
+    role: "client"
   };
   user: User = {
    userId: null,
-    username: 'registerkenny',
-    password: 'pwd',
-    first_name: 'ken',
-    last_name: 'eng',
+    username: '',
+    password: '',
+    first_name: '',
+    last_name: '',
     role_id:  this.role
-  };
+  }
 
   userRef : Observable<User> | undefined
   
@@ -58,14 +58,21 @@ const registerObserver = {
       this.user.last_name = f.value.last_name;
       this.user.password = f.value.password;
       
-      this.authservice.register(this.user)
-      .subscribe(newUser => {
-        this.users.push(newUser);
-        alert(" Welcome" + newUser.first_name);
-        
-        this.router.navigate(['home']);
-      });
-  
+  if (f.value.username !== "" && f.value.first_name !== "" &&
+            f.value.last_name !== "" && f.value.password !== ""){
+              this.authservice.register(this.user)
+              .subscribe(newUser => {
+               // this.users.push(newUser);
+                alert(" Welcome! " + newUser.first_name);
+                localStorage.setItem("username",  newUser.username);
+                localStorage.setItem("id",   newUser.userId+"");
+                localStorage.setItem("role",  newUser.role_id.role)
+                this.router.navigate(['home']);
+              });
+          
+            }
+
+     
   
       
     // this.http.post<any>('http://localhost:8088/boot/users/register', )

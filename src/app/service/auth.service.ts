@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap, isEmpty, switchMap } from 'rxjs/operators';
@@ -7,6 +7,7 @@ import { Hero } from '../models/Hero';
 import { Router } from '@angular/router';
 import { UserService } from './user.service';
 import { formatDate } from '@angular/common';
+
 
 @Injectable({
   providedIn: 'root'
@@ -76,12 +77,28 @@ export class AuthService {
     // .pipe(map(user => {
     //     // store user details and jwt token in local storage to keep user logged in between page refreshes
     //     console.log(user.username);
-    //     localStorage.setItem("username" , user.username);
-    //       //localStorage.setItem('user', JSON.stringify(user));
+    //     localStorage.setI'tem("username" , user.username);
+    //       //localStorage.setItem('user, JSON.stringify(user));
     //    // this.userSubject.next(user);
     //     return user;
     // }));
   /// }
+
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
+  login(): Observable<boolean> {
+    if (this.isAuthenticated() > 0) {
+        this.getLoggedInName.emit('loggedin');
+        return of(true);
+    } else {
+        this.getLoggedInName.emit('Sign In');
+        return of(false);
+    }
+}
+
+logout(): void {
+  this.getLoggedInName.emit('Sign In');
+}
+
 
   register( user: User) : Observable<User> {
   

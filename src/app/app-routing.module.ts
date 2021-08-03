@@ -64,7 +64,7 @@ const routes: Routes = [
   {
     path:'upload',
     component: UploadComponent,
-    canActivate: [IsLoginGuardGuard]  
+    canActivate: [AdminGuard]
   },
   {
     path:'about',
@@ -85,7 +85,7 @@ const routes: Routes = [
   {
     path:'sign-up',
     component: SignUpComponent,
-    canActivate: [IsLoginGuardGuard]  
+   
   },
   {
   path:'reset-password',
