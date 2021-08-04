@@ -1,0 +1,15 @@
+accordion {
+  margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.appTitle {
+  text-align: center;
+  font-family: "Cabin Sketch", cursive;
+  font-size: 200px;
+
+  color: #ff4b2b;
+}
