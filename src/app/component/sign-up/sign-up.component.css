@@ -48,6 +48,8 @@ h2 {
 
 #signUp-form {
   align-content: center;
+  font-family: "Cabin Sketch", cursive;
+  font-size: medium;
 }
 
 label {
