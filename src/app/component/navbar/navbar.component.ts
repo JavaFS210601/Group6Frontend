@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -19,16 +20,30 @@ export class NavbarComponent implements OnInit {
     
   }
 
-  constructor(public router: Router) { this.user_id = localStorage.getItem("id"); }
+  constructor(public router: Router , private auth : AuthService) {
+     this.user_id = localStorage.getItem("id");
+    
+   
+ }
 
   ngOnInit(): void {
     //this.user_id = localStorage.getItem("id");
+
+    this.auth.getLoggedInName.subscribe(name =>
+      {
+        if(name === "loggedin") {
+          this.user_id = localStorage.getItem('id') 
+        };
+      }  
+     );
   }
 
   logOut() {
-    localStorage.setItem("username", "");
-    localStorage.setItem("id",  "")
-    localStorage.setItem("role", "")
+    // localStorage.setItem("username", "");
+    // localStorage.setItem("id",  "")
+    // localStorage.setItem("role", "")
+    localStorage.clear();
+    this.user_id = "";
     this.router.navigate(['home']);
   }
 
