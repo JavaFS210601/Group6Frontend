@@ -48,6 +48,7 @@ public apiSearch = "orange";
     //this is the example they give me
     // https://api.nal.usda.gov/fdc/v1/foods/search?query=apple&pageSize=2&api_key=TyfoArR5KncmZdQ7kO2KntcjEnDhAoEgU3QGczBv
     // forgot angular is OOP so had to use this keyword thaks Golam
+    debounceTime(10000)
     return this.http.get<any>('https://api.nal.usda.gov/fdc/v1/foods/search?query='+this.apiSearch+'&pageSize=10&api_key='+this.apiKey)
     
     //trying a different appoach to try to sync it to the typehead

@@ -4,6 +4,7 @@ import { RecipeDTO } from 'src/app/models/Recipe';
 import { RecipeService } from 'src/app/service/recipe.service';
 import { FormControl, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { debounceTime } from 'rxjs/operators';
 
 
 
@@ -193,6 +194,7 @@ export class UploadComponent implements OnInit {
   callAPI(index : number){
     this.term = this.ingForm.value.ingredients[index]['ingredient']  // put data in ingForm into term
       //chani: was taken fromthe getFoods method in the reciepe service
+      debounceTime(10000)
       this.recipeService.getFood(this.term).subscribe(
         response => {
   
