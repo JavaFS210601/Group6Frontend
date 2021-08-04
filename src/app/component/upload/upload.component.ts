@@ -292,15 +292,15 @@ export class UploadComponent implements OnInit {
         
         
         for ( let s = 0 ; s < stepSize ;s++){
-          let stepEntered =  this.stepForm.value.steps[s]['step'].replace(/,/g, ' ').replace('-', ' ');
+          let stepEntered =  this.stepForm.value.steps[s]['step'].replace(/,/g, ' ').replace('_', ' ');
           if (stepEntered === "") {
             alert("please fill in steps");
             break;
           }
-          if (i === (stepSize-1) ){
+          if (s === (stepSize-1) ){
             stepString  += stepEntered ;
           } else {
-            stepString += stepEntered + ", ";
+            stepString += stepEntered + "_";
           }
         }
 
