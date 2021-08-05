@@ -14,7 +14,6 @@ import { RecipeService } from 'src/app/service/recipe.service';
 })
 export class RecipeDetailComponent implements OnInit {
   
- // @Input() recipeExtRef: Observable<RecipeExt > | undefined;
   recipeExtRef : Observable<RecipeExt >  | undefined
   recipeExt : RecipeExt | undefined
   ingrediant1: Ingrediant[] | undefined;
@@ -49,19 +48,5 @@ export class RecipeDetailComponent implements OnInit {
      // this.ingrediant1 = this.recipeExtRef['ingrediants'];
     }
      
-    // this.recipeExtRef.subscribe(
-    //   data =>  {
-    //     console.log("!!! recipes recieved "
-    //     +  data
-    //       ); 
-          
-    //     // console.log(data['steps'][0].step_id + data['steps'][0].step  );
-       
-    //       this.ingrediant1 =  data['ingrediants'];
-    //       console.log(this.ingrediant1)
-    //        this.step1 = data['steps'];
-
-          
-    //   } )
   }
 }

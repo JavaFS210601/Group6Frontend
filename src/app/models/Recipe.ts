@@ -7,14 +7,11 @@ export interface Recipe {
     description: string;
     category: string;
     inspiration: string;
-    
-   // userId: number;
-  //  methodId: number;
+
 }
 
 export interface RecipeExt extends Recipe{ 
    
-   // recipeIngrediants: RecipeIngrediants[];
    ingrediants: Ingrediant[];
    steps: Step[];
 

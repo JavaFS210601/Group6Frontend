@@ -2,6 +2,60 @@ test change
 
 # Recipelify
 
+# Goals
+
+1. Guest User should able to see recipes in our website.
+
+2. Guest User should able to search recipes by name
+
+3. Guest User should able to login/logout
+
+4. Member should be able to check their own recipes in the dashboard
+
+5. Member should be to make a recipe and store it in our database
+
+6. Member user should be able to submit recipewith multiple ingredients listing from an API (Food Data Central)
+
+7. Member user should be able to submit recipe with muliple steps.
+
+8. Each recipe will have pictures
+
+## The choice of tools and technologies for the project
+
+AngularJS is used in this project to create an single page application for frontend. Other extra modules includes Ng-bootstrap,  HttpClientModule are used to handle style and http request/response. 
+
+# Data Models 
+
+### Recipe data will have two extension based on the json data coming from the backend
+1. Recipe:
+    recipe_id: number | null;
+    name: string;
+    description: string;
+    category: string;
+    inspiration: string;
+
+    - RecipeExt:
+   ingrediants: Ingrediant[];
+   steps: Step[];
+
+    - RecipeDTO
+    userId : number;
+    ingrediants: string; 
+    steps: string;
+
+2. User"
+    userId: number | null;
+    username: string;
+    password: string;
+    first_name: string;
+    last_name: string;
+    role_id: Role;
+
+
+
+
+# Angular command
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
 
 ## Development server

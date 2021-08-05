@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap, isEmpty, switchMap } from 'rxjs/operators';
 import { User } from '../models/User';
-import { Hero } from '../models/Hero';
 import { Router } from '@angular/router';
 import { UserService } from './user.service';
 import { formatDate } from '@angular/common';
@@ -14,116 +13,73 @@ import { formatDate } from '@angular/common';
 })
 export class AuthService {
 
-  //private isLogin: boolean;
-
-  private serverUrl = 'http://localhost:8088/boot/users';
-  private createUrl = 'http://localhost:8088/boot/register';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient,  private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
 
-    // this.heroName = "";
-    // this.isLogin = false;
-    // const myObserver = {
-    //   next: (x: Hero) => x != undefined ? this.isLogin = true: this.isLogin = false,
-    //   error: (err: Error) => console.error('Observer got an error: ' + err),
-    //   complete: () => console.log('Observer got a complete notification'),
-    // };
-
-    /// let observabledata = userService.getHero(1);
-    ///  observabledata.subscribe(myObserver);
   }
 
-
-  isAuthenticated() : number {
+  /*
+     Check if the user is authenticated
+   */
+  isAuthenticated(): number {
     //if localstorage has the user information , return user is login.
     if (localStorage.getItem("username") !== "") {
       console.log(localStorage.getItem("username") + " is logged in");
 
-       if (localStorage.getItem("role") === "manager"){
-          return 1;
+      if (localStorage.getItem("role") === "manager") {
+        return 1;
       } else {
-          return 3;
+        return 3;
       }
 
-     
-    } else {
-    //  this.router.navigate(['login']);
-    }
 
-    // make a backend call to find the user by username and pwd
+    } else {
+      this.router.navigate(['login']);
+    }
 
 
     return 0;
   }
 
-  // Deprecated 
-  // login(username: string, password: string): Observable<User> {
-  //   console.log("Helle from login method" +username + password);
-  //   const formData = new FormData()
-  //   formData.append("username" , username);
-  //   formData.append("password", password);
-  //   //return this.http.post<User>(`${this.serverUrl}/authenticate`, { username, password } )
-  //   return this.http.post<User>(this.serverUrl + "/authenticate",formData) 
-  //     .pipe(
-  //       tap(data => {
-  //         localStorage.setItem("username", data.username);
-  //         console.log(data.username);
-  //       })
-  //     );
-    // .pipe(map(user => {
-    //     // store user details and jwt token in local storage to keep user logged in between page refreshes
-    //     console.log(user.username);
-    //     localStorage.setI'tem("username" , user.username);
-    //       //localStorage.setItem('user, JSON.stringify(user));
-    //    // this.userSubject.next(user);
-    //     return user;
-    // }));
-  /// }
 
+  /*
+     it is used to update the navbar when user log in.
+   */
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   login(): Observable<boolean> {
     if (this.isAuthenticated() > 0) {
-        this.getLoggedInName.emit('loggedin');
-        return of(true);
+      this.getLoggedInName.emit('loggedin');
+      return of(true);
     } else {
-        this.getLoggedInName.emit('Sign In');
-        return of(false);
+      this.getLoggedInName.emit('Sign In');
+      return of(false);
     }
-}
+  }
 
-logout(): void {
-  this.getLoggedInName.emit('Sign In');
-}
+  /*
+  it is used to update the navbar when user log out
+   */
+  logout(): void {
+    this.getLoggedInName.emit('Sign In');
+  }
 
+  /*
+   A method used to register new user
+   */
+  register(user: User): Observable<User> {
 
-  register( user: User) : Observable<User> {
-  
     //const data = JSON.stringify(user)
-    
-    return this.http.post<User>( "http://localhost:8088/boot/users/register",  user ,this.httpOptions) 
-    // .pipe(
-    //   tap(_ => this.log(`deleted_user user=${user}`)),
-    //   catchError(this.handleError<User>('deleteUser'))
-    // );
-    
+
+    return this.http.post<User>("http://localhost:8088/boot/users/register", user, this.httpOptions)
+
     console.log(user);
 
   }
 
-  //here is the method to create a new user this might need to be adjusted
-  register2(model: any){
-    let headers = new HttpHeaders({
-      //'formData': this.formData
-//this section is most likely wrong I am not 100 percent sure what to do
-    });
-    //options this is probably wrong
-    let options = {headers:headers};
-    return this.http.post(this.createUrl + 'create', model, options);
-  }
 
   private log(message: string) {
     //this.messageService.add(`HeroService: ${message}`);

@@ -19,7 +19,7 @@ export class DeleteUserButtonComponent implements OnInit {
   }
 
   delete(): void {
-    //this.user = this.user.filter(h => h !== user);
+
     this.userService.deleteUser(this.user).subscribe();
     this.refreshPage();
   }

@@ -3,14 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { User} from '../models/User';
-import { Hero } from '../models/Hero';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  //private serverUrl = 'http://localhost:8081/HelloSpringMVC/avengers';
 
   private ChefRecipesrl = 'http://localhost:8088/boot/users';
   httpOptions = {
@@ -33,9 +30,7 @@ export class UserService {
 
   updateUser(user: User) :  Observable<User>{
       return this.http.put(this.ChefRecipesrl, user, this.httpOptions) as Observable<User>
-      // .pipe(
-      //    catchError(this.handleError<User>('updateUser'));
-      // )
+
   }
 
   /*

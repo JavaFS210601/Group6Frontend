@@ -72,13 +72,7 @@ const registerObserver = {
           
             }
 
-     
-  
-      
-    // this.http.post<any>('http://localhost:8088/boot/users/register', )
-    // .subscribe(
-    //   data => localStorage.setItem("username", data.username);
-    //  );
+ 
 
     console.log(f.value);  // { first: '', last: '' }
     console.log(f.valid);  // false

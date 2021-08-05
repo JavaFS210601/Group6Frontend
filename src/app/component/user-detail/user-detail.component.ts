@@ -20,7 +20,6 @@ export class UserDetailComponent implements OnInit {
  password: string = "";
 
   userId : string | null;
- //userRef : Observable<User>;
  user: User | undefined;
   constructor( private userService: UserService , 
     private route: ActivatedRoute,
@@ -28,8 +27,6 @@ export class UserDetailComponent implements OnInit {
 
     this.userId = this.route.snapshot.paramMap.get('id');
 
-      // this.userRef = this.userService.getUser(Number(this.userId));
-      // console.log(this.userRef);
    }
 
   ngOnInit(): void {
