@@ -8,5 +8,5 @@ export interface User {
     first_name: string;
     last_name: string;
     role_id: Role;
-    //recipe_id: number;
+
 }

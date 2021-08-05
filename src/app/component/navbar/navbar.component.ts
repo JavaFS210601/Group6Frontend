@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
  }
 
   ngOnInit(): void {
-    //this.user_id = localStorage.getItem("id");
+
 
     this.auth.getLoggedInName.subscribe(name =>
       {
@@ -39,9 +39,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut() {
-    // localStorage.setItem("username", "");
-    // localStorage.setItem("id",  "")
-    // localStorage.setItem("role", "")
+
     localStorage.clear();
     this.user_id = "";
     this.router.navigate(['home']);

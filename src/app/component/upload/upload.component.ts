@@ -257,12 +257,7 @@ export class UploadComponent implements OnInit {
   recipeDTO2: RecipeDTO | undefined
   onSubmit() {
     try {
-      console.log(this.ingForm.value);
-     // console.log(this.myForm.value);
-      console.log(this.otherForm.value);
-      console.log(this.stepForm.value);
-    //  console.log(this.myFormAPI.value);
-     // console.log(this.ingForm.value.ingredients2[0]['ingredient']);
+
       let name = this.nameForm.value.recipeName;
       let description = this.otherForm.value.description;
       let inspiration = this.otherForm.value.inspiration;
@@ -294,23 +289,21 @@ export class UploadComponent implements OnInit {
         
         
         for ( let s = 0 ; s < stepSize ;s++){
-          let stepEntered =  this.stepForm.value.steps[s]['step'].replace(/,/g, ' ').replace('-', ' ');
+          let stepEntered =  this.stepForm.value.steps[s]['step'].replace(/,/g, ' ').replace('_', ' ');
           if (stepEntered === "") {
             alert("please fill in steps");
             break;
           }
-          if (i === (stepSize-1) ){
+          if (s === (stepSize-1) ){
             stepString  += stepEntered ;
           } else {
-            stepString += stepEntered + ", ";
+            stepString += stepEntered + "_";
           }
         }
 
       }
       console.log("the recipe :" + stepString);
-      // let ingrediantsString = this.ingForm.value.ingredients[0]['ingredient'] + "-"
-      //   + this.ingForm.value.ingredients[0]['amount'] + ", ";
-      // + this.myForm.value.ingredient + "-1b";
+
 
       this.recipeDTO2 = {
         recipe_id: null,

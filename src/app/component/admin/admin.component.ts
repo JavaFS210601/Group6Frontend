@@ -14,39 +14,13 @@ import { User} from '../../models/User';
 })
 export class AdminComponent implements OnInit {
 
- // userService : UserService | undefined;
- //heroRef: Observable<Hero[]>;
+
  userRef: Observable<User[]>;
-
-//  role: Role {
-//    role_id: 1;
-//    role: "employye"
-//  };
-//   user: User = {
-//     user_id: 1,
-//     username: 'kenny',
-//     password: 'pwd',
-//     first_name: 'ken',
-//     last_name: 'eng',
-//     role_id:  role,
-//     recipe_id: 1
-//   };
-
-  // item: Ingediant = {
-  //   ingrediantId: 1,
-  //   ingrediant: "coconuts",
-  //   amount: 200
-  // };
-
-  // itemList: Ingediant[] = [];
-
-  //heroes: Hero[] = [];
 
   steps: Step[] = [];
 
   constructor(private userService: UserService , private recipeService: RecipeService) { 
-    //this.userService = userService;
-    //this.heroRef = this.userService.getHeros();
+ 
     this.userRef = this.userService.getUsers();
 
     this.steps = this.recipeService.getRecipeSteps();
@@ -57,10 +31,6 @@ export class AdminComponent implements OnInit {
     
   }
 
-  getHero(){
-    //this.heroRef = this.userService.getHeros();
-
-  }
 
 
 

@@ -13,19 +13,15 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  //user: Observable<User> | undefined;
+
   user: any;
   constructor(private authservice: AuthService,private http: HttpClient, public router: Router) { 
 
-   // this.authservice.login("ken3changee", "Very Patriotic");
+
     
   }
 
-  ngOnInit(): void {
-   
-
-    // this.userService.
-  }
+  ngOnInit(): void {}
   onSubmit(f: NgForm) {
     
     // Create observer object
@@ -34,13 +30,13 @@ export class LoginComponent implements OnInit {
       error: (err: Error) => console.error(err)
 
     };
-    //tried to to the login dont think this is correct
+
     console.log(f.value.username, f.value.password);
-    //this.user = this.authservice.login(f.value.username, f.value.password);
+
     const formData = new FormData()
     formData.append("username" , f.value.username);
     formData.append("password", f.value.password);
-   //this.user = this.userService.login(f.value.username, f.value.password)
+
 
    
    this.user = this.http.post<any>("http://localhost:8088/boot/users"+ "/authenticate",formData)
@@ -58,7 +54,7 @@ export class LoginComponent implements OnInit {
     );
 
 
-    console.log(f.value);  // { first: '', last: '' }
-    console.log(f.valid);  // false
+    console.log(f.value);  
+    console.log(f.valid); 
   }
 }

@@ -15,30 +15,11 @@ import { LinkedList } from 'ngx-bootstrap/utils';
 })
 export class DashboardRecipeComponent implements OnInit {
 
-  //   recipes: Recipe[] = [{
-  //     recipeId: 1,
-  //     name: "Grilled Cheese",
-  //     description: "Made with cheese, bread and butter",
-  //     category: "Snack",
-  //     inspiration: "Quick and easy snack",
-  //     userId: 2,
-  //     methodId: 1
-  //   },
-  //   {
-  //     recipeId: 2,
-  //     name: "Eggs",
-  //     description: "Sunny side up eggs",
-  //     category: "Breakfast",
-  //     inspiration: "Quick breakfast",
-  //     userId: 2,
-  //     methodId: 2
-  //   },
-  // ] ;
   user: User | undefined;
   userRef: Observable<User[]>;
 
   recipe: Recipe | undefined;
-  // recipeRef: Observable<Recipe []>;
+
   recipeRef2: Observable<Recipe[]>;
 
   recipeExtRef: Observable<RecipeExt[]>;
@@ -68,7 +49,7 @@ export class DashboardRecipeComponent implements OnInit {
     this.numOfRecipe = 0;
 
     this.recipe2Parser();
-    //this.ingrediantParser();
+
 
   }
 
